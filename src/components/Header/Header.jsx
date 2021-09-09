@@ -12,9 +12,9 @@ export const Header = () => {
                         <h1 className="text-dark ms-5">
                             Interviews Reports
                         </h1></Link>
-                    <button type="button" className="btn btn-light btn-outline-secondary me-5 ps-5 pe-5">
+                        <Link className="candidates" to="/home"><button type="button" className="btn btn-light btn-outline-secondary me-5 ps-5 pe-5">
                         Candidates
-                    </button>
+                    </button></Link>
                 </div>
             </nav>
         </header>
