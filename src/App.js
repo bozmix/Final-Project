@@ -5,6 +5,7 @@ import { Header } from './components/Header/Header';
 import { getCandidates } from './Services/getCandidates';
 import { useEffect, useState } from 'react';
 import { Candidates } from './components/Candidates/Candidates';
+import { Login } from './components/Login/Login';
 
 function App() {
 
@@ -27,8 +28,9 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Candidates candidates={candidates} />
+      <Login />
+{/*       <Header />
+      <Candidates candidates={candidates} /> */}
     </div>
   );
 }
