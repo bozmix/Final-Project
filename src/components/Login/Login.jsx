@@ -2,13 +2,12 @@ import "./Login.css";
 
 export const Login = () => {
     return (
-        <div className="wrapper fadeInDown">
-            <div id="formContent">
-
-                <form>
-                    <input type="text" id="login" className="fadeIn second" name="login" placeholder="login"></input>
-                    <input type="text" id="password" className="fadeIn third" name="login" placeholder="password"></input>
-                    <input type="submit" class="fadeIn fourth" value="Log In"></input>
+        <div className="wrapperLogin fadeInDown">
+            <div id="formContentLogin">
+                <form action="http://localhost:3333/login" method="POST">
+                    <input type="text" id="inputLogin" className="fadeIn firstLogin" name="email" placeholder="Login"></input>
+                    <input type="password" id="inputPassword" className="fadeIn secondLogin" name="password" placeholder="Password"></input>
+                    <input type="submit" id="inputSubmit" className="fadeIn thirdLogin" value="Log In"></input>
                 </form>
             </div>
         </div>

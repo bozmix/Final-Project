@@ -1,14 +1,14 @@
+import { useEffect, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router';
-import './App.css';
 import { getToken } from './Services/getToken';
 import { Header } from './components/Header/Header';
-import { getCandidates } from './Services/getCandidates';
-import { useEffect, useState } from 'react';
-import { Candidates } from './components/Candidates/Candidates';
-
 import { Login } from './components/Login/Login';
-
+import { getCandidates } from './Services/getCandidates';
+import { SingleCandidate } from './components/SingleCandidate/SingleCandidate';
+import { Candidates } from './components/Candidates/Candidates';
 import { Footer } from './components/Footer/Footer';
+import { isUserLoggedIn } from './Services/isUserLoggedIn';
+import './App.css';
 
 
 function App() {
@@ -32,13 +32,21 @@ function App() {
 
   return (
     <div className="App">
-
-      <Login />
-{/*       <Header />
-      <Candidates candidates={candidates} /> */}
-
       <Header />
-      <Candidates candidates={candidates} />
+      {
+        isUserLoggedIn()
+          ?
+          <Switch>
+            <Route exact path='/home' component={() => <Candidates candidates={candidates} />} />
+            <Route path='/SingleCandidate/:id' component={SingleCandidate} />
+            <Redirect from='/' to='/home' />
+          </Switch>
+          :
+          <Switch>
+            <Route exact path='/login' component={Login} />
+            <Redirect from='/' to='/login' />
+          </Switch>
+      }
       <Footer />
 
     </div>
