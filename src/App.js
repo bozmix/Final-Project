@@ -5,6 +5,7 @@ import { Header } from './components/Header/Header';
 import { getCandidates } from './Services/getCandidates';
 import { useEffect, useState } from 'react';
 import { Candidates } from './components/Candidates/Candidates';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
     <div className="App">
       <Header />
       <Candidates candidates={candidates} />
+      <Footer />
     </div>
   );
 }
