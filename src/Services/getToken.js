@@ -9,5 +9,12 @@ export const getToken = () => {
             "Content-Type": "application/json",
         },
     })
-    .then(data => console.log(data))
+        .then(data => data.json())
+        .then(info => {
+            return info.accessToken
+        })
 }
+
+
+
+/* .then(localStorage.setItem("ourAccessToken#nibble", accessToken)) */
