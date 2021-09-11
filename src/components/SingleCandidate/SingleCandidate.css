@@ -1,0 +1,25 @@
+.imagePlaceholder {
+    width: 100%;
+}
+
+table {
+    border: 1px solid black;
+    width: 90%;
+}
+
+tr {
+    border: 1px solid black;
+}
+
+td {
+    border: 1px solid black;
+}
+
+.loadingImageDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.loadingImage {
+    height: 100vh;
+}

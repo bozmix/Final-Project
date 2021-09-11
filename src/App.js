@@ -38,26 +38,27 @@ function App() {
   }
 
 
+
   return (
     <div className="App">
+      <SingleCandidate token={token} />
+      {/* 
+      {loggedIn}
+      ?
 
-      {
-        loggedIn
-          ?
-          <Switch>
-            <Header changeLogIn={changeLogIn} />
-            <Route exact path='/home' component={() => <Candidates candidates={candidates} />} />
-            <Route path='/SingleCandidate/:id' component={SingleCandidate} />
-            <Redirect from='/' to='/home' />
-          </Switch>
-          :
-          <Switch>
-            <Route exact path='/login' component={() => <Login changeLogIn={changeLogIn} />} />
-            <Redirect from='/' to='/login' />
-          </Switch>
-      }
-      <Footer />
+      <Switch>
+        <Header changeLogIn={changeLogIn} />
 
+        <Route exact path='/home' component={() => <Candidates candidates={candidates} />} />
+        <Route path='/SingleCandidate/:id' component={SingleCandidate} />
+        <Redirect from='/' to='/home' />
+      </Switch>
+      :
+      <Switch>
+        <Route exact path='/login' component={() => <Login changeLogIn={changeLogIn} />} />
+        <Redirect from='/' to='/login' />
+      </Switch>
+      <Footer /> */}
     </div>
   );
 }
