@@ -38,9 +38,9 @@ function App() {
   }
 
 
+
   return (
     <div className="App">
-
       {
         loggedIn
           ?
@@ -59,7 +59,6 @@ function App() {
           </Switch>
       }
       <Footer />
-
     </div>
   );
 }
