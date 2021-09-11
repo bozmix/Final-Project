@@ -1,26 +1,31 @@
+import { useEffect, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router';
-import './App.css';
 import { getToken } from './Services/getToken';
 import { Header } from './components/Header/Header';
-import { getCandidates } from './Services/getCandidates';
-import { useEffect, useState } from 'react';
-import { Candidates } from './components/Candidates/Candidates';
-
 import { Login } from './components/Login/Login';
-
+import { getCandidates } from './Services/getCandidates';
+import { SingleCandidate } from './components/SingleCandidate/SingleCandidate';
+import { Candidates } from './components/Candidates/Candidates';
 import { Footer } from './components/Footer/Footer';
+import { isUserLoggedIn } from './Services/isUserLoggedIn';
+import './App.css';
 
 
 function App() {
 
   const [token, setToken] = useState("");
   const [candidates, setCandidates] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+
 
   useEffect(() => {
+    setLoggedIn(localStorage.getItem("userLoggedIn#10394e1"))
     getToken().then(tokenResponse => {
       setToken(tokenResponse)
     })
   }, [])
+
+
 
   useEffect(() => {
     getCandidates(token).then(candidates => {
@@ -28,17 +33,29 @@ function App() {
     })
   }, [token])
 
-  console.log(candidates)
+  const changeLogIn = () => {
+    setLoggedIn(!loggedIn)
+  }
+
 
   return (
     <div className="App">
 
-      <Login />
-{/*       <Header />
-      <Candidates candidates={candidates} /> */}
-
-      <Header />
-      <Candidates candidates={candidates} />
+      {
+        loggedIn
+          ?
+          <Switch>
+            <Header changeLogIn={changeLogIn} />
+            <Route exact path='/home' component={() => <Candidates candidates={candidates} />} />
+            <Route path='/SingleCandidate/:id' component={SingleCandidate} />
+            <Redirect from='/' to='/home' />
+          </Switch>
+          :
+          <Switch>
+            <Route exact path='/login' component={() => <Login changeLogIn={changeLogIn} />} />
+            <Redirect from='/' to='/login' />
+          </Switch>
+      }
       <Footer />
 
     </div>
