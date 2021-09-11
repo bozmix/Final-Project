@@ -5,36 +5,50 @@ import { getDate } from "../../Services/getDate";
 import { getReports } from "../../Services/getReports";
 import imagePlaceholder from "./assets/placeholderImage.png";
 import loadingImage from "./assets/loadingScreen.gif";
+import { getSingleCandidate } from "../../Services/getSingleCandidate";
 import "./SingleCandidate.css";
 
 
 
-export const SingleCandidate = ({ token }) => {
+export const SingleCandidate = (props) => {
 
 
     const [candidates, setCandidates] = useState([]);
     const [companies, setCompanies] = useState([]);
     const [reports, setReports] = useState([]);
+    const [candidate, setCandidate] = useState({});
 
-    const candidate = candidates[0]
 
     useEffect(() => {
-        getCandidates(token).then(candidates => {
+        getCandidates(props.token).then(candidates => {
             setCandidates(candidates)
         })
-        getCompanies(token).then(companies => {
+        getCompanies(props.token).then(companies => {
             setCompanies(companies)
         })
-        getReports(token).then(reports => {
-            setReports(reports)
+
+    }, [])
+
+
+
+
+
+    useEffect(() => {
+        getSingleCandidate(props.match.params.id, props.token).then((candidate) => {
+            setCandidate(candidate)
+            getReports(props.token).then(reports => {
+                const filtRep = reports.filter((report) => report.candidateId === candidate.id)
+                setReports(filtRep)
+            })
         })
-    }, [token])
+    }, [])
 
 
 
-    console.log(candidate)
-    console.log(companies)
-    console.log(reports)
+    console.log("filteredReports", reports)
+    console.log("candidate", candidate)
+    console.log("companies", companies)
+
 
     if (candidates.length < 1 && companies.length < 1 && reports.length < 1) {
         return (
@@ -67,16 +81,20 @@ export const SingleCandidate = ({ token }) => {
                     <table className="table table-striped table-hover">
                         <tbody>
                             <tr>
-                                <td><i className="fas fa-caret-down"></i> Company</td>
-                                <td><i className="fas fa-caret-down"></i> Interview Date</td>
-                                <td colSpan="2"><i className="fas fa-caret-down"></i> Status</td>
+                                
+                                <th><i className="fas fa-caret-down"></i> Company</th>
+                                <th><i className="fas fa-caret-down"></i> Interview Date</th>
+                                <th colSpan="2"><i className="fas fa-caret-down"></i> Status</th>
                             </tr>
-                            <tr>
-                                <td className="col-4">{ }</td>
-                                <td className="col-4">{ }</td>
-                                <td className="col-3">{ }</td>
-                                <td className="col-1 text-center"><button><i className="far fa-eye"></i></button></td>
-                            </tr>
+
+                            {reports.map((report, index) => (
+                                <tr>
+                                    <td className="col-4">{report.companyName}</td>
+                                    <td className="col-4">{getDate(report.interviewDate)}</td>
+                                    <td className="col-3">{report.status}</td>
+                                    <td className="col-1 text-center"><button><i className="far fa-eye"></i></button></td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>

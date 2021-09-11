@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import "./Candidates.css";
 import { Link } from 'react-router-dom';
 
-export const Candidates = ({candidates}) => {
+export const Candidates = ({ candidates }) => {
 
     const [filteredCandidates, setFilteredCandidates] = useState(candidates);
 
+
     const filterCandidates = (event) => {
         const filterCand = candidates.filter(candidate => {
+            console.log("CANDIDATEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEee", candidate)
             return candidate.name.toLowerCase().includes(event.target.value.toLowerCase())
         })
         setFilteredCandidates(filterCand)
         console.log(filteredCandidates)
     }
-  
+
     if (candidates.length < 1) {
         return (
             <div className="loadingImageDiv">
@@ -24,23 +26,23 @@ export const Candidates = ({candidates}) => {
         return (
             <>
                 <nav className="navbar navbar-light bg-light">
-                    <span className="navbar-brand mb-0 h1">Candidates</span>
-                    <div className="form-inline">
+                    <span className="navbar-brand mb-0 h1 ms-5 me-5">Candidates</span>
+                    <div className="form-inline ms-5 me-5">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={filterCandidates}></input>
                     </div>
                 </nav>
-    
-                <div className='candidates'>
-                    {filteredCandidates.map(candidates2 => {
+
+                <div className='candidates ms-5'>
+                    {filteredCandidates.map((candidates2, index) => {
                         return (
-                            <Link to={`/SingleCandidate/${candidates2.id}`}>
-                            <div className='candidate'>
-                                <div className='image'>
-                                    <img src='https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png'/>
+                            <Link to={`/SingleCandidate/${candidates2.id}`} key={index}>
+                                <div className='candidate'>
+                                    <div className='image'>
+                                        <img src='https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png' />
+                                    </div>
+                                    <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name}</h4>
+                                    <p>{(candidates2.email === undefined) ? "No data about email" : candidates2.email}</p>
                                 </div>
-                                <h4>{candidates2.name}</h4>
-                                <p>{candidates2.email}</p>
-                            </div>
                             </Link>
                         )
                     })}
@@ -50,5 +52,5 @@ export const Candidates = ({candidates}) => {
     }
 
 
-    
+
 }
