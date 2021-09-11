@@ -26,3 +26,7 @@ img {
 .loadingImage {
     height: 100vh;
 }
+
+.candidates {
+    margin-bottom: 100px;
+}

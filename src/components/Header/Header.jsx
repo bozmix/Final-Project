@@ -19,7 +19,7 @@ export const Header = ({ changeLogIn }) => {
                             Interviews Reports
                         </h1>
                     </Link>
-                    <Link className="candidates" to="/home">
+                    <Link className="candidatesLinks" to="/home">
                         <button type="button" className="btnCandidates btn btn-light btn-outline-secondary me-5 ps-5 pe-5">
                             Candidates
                         </button>

@@ -1,5 +1,5 @@
-export const getCandidates = (token) => {
-    return fetch("http://localhost:3333/api/candidates", {
+export const getSingleCandidate = (id, token) => {
+    return fetch(`http://localhost:3333/api/candidates/${id}`, {
         method: "GET",
         headers: {
             Authorization: `Bearer ${token}`,
@@ -7,6 +7,6 @@ export const getCandidates = (token) => {
     })
         .then((data) => data.json())
         .then((info) => {
-            return info.slice(0,7);
+            return info
         });
 };
