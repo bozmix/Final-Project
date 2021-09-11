@@ -1,0 +1,28 @@
+div{
+    color: black;
+}
+
+.candidates {
+    margin: 0 auto;
+}
+
+.candidate {
+    width: 22%;
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    box-shadow: -1px 6px 11px 0px rgba(0,0,0,0.63);
+}
+
+img {
+    width: 100%;
+}
+
+.loadingImageDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.loadingImage {
+    height: 100vh;
+}

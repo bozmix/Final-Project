@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router';
-import { getToken } from './Services/getToken';
+import { getToken } from './services/getToken';
 import { Header } from './components/Header/Header';
 import { Login } from './components/Login/Login';
-import { getCandidates } from './Services/getCandidates';
+import { getCandidates } from './services/getCandidates';
 import { SingleCandidate } from './components/SingleCandidate/SingleCandidate';
 import { Candidates } from './components/Candidates/Candidates';
 import { Footer } from './components/Footer/Footer';
-import { isUserLoggedIn } from './Services/isUserLoggedIn';
 import './App.css';
 
 
@@ -25,11 +24,12 @@ function App() {
     })
   }, [])
 
-
+  console.log('token iz app',token)
 
   useEffect(() => {
     getCandidates(token).then(candidates => {
       setCandidates(candidates)
+      console.log('nestoooo', candidates)
     })
   }, [token])
 
@@ -44,12 +44,14 @@ function App() {
       {
         loggedIn
           ?
-          <Switch>
+          <>
             <Header changeLogIn={changeLogIn} />
-            <Route exact path='/home' component={() => <Candidates candidates={candidates} />} />
-            <Route path='/SingleCandidate/:id' component={SingleCandidate} />
-            <Redirect from='/' to='/home' />
-          </Switch>
+            <Switch>
+              <Route path='/home' component={() =>  <Candidates candidates={candidates}/>} />
+              <Route path='/SingleCandidate/:id' component={SingleCandidate} />
+              <Redirect from='/' to='/home' />
+            </Switch>
+          </>
           :
           <Switch>
             <Route exact path='/login' component={() => <Login changeLogIn={changeLogIn} />} />
