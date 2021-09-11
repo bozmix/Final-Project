@@ -15,12 +15,17 @@ function App() {
 
   const [token, setToken] = useState("");
   const [candidates, setCandidates] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+
 
   useEffect(() => {
+    setLoggedIn(localStorage.getItem("userLoggedIn#10394e1"))
     getToken().then(tokenResponse => {
       setToken(tokenResponse)
     })
   }, [])
+
+
 
   useEffect(() => {
     getCandidates(token).then(candidates => {
@@ -28,22 +33,26 @@ function App() {
     })
   }, [token])
 
-  console.log(candidates)
+  const changeLogIn = () => {
+    setLoggedIn(!loggedIn)
+  }
+
 
   return (
     <div className="App">
-      <Header />
+
       {
-        isUserLoggedIn()
+        loggedIn
           ?
           <Switch>
+            <Header changeLogIn={changeLogIn} />
             <Route exact path='/home' component={() => <Candidates candidates={candidates} />} />
             <Route path='/SingleCandidate/:id' component={SingleCandidate} />
             <Redirect from='/' to='/home' />
           </Switch>
           :
           <Switch>
-            <Route exact path='/login' component={Login} />
+            <Route exact path='/login' component={() => <Login changeLogIn={changeLogIn} />} />
             <Redirect from='/' to='/login' />
           </Switch>
       }
