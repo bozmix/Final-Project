@@ -38,7 +38,7 @@ export const Candidates = ({ candidates }) => {
                             <Link to={`/SingleCandidate/${candidates2.id}`} key={index}>
                                 <div className='candidate'>
                                     <div className='image'>
-                                        <img src='https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png' />
+                                        <img src='https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png' alt="profileCandidate"/>
                                     </div>
                                     <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name}</h4>
                                     <p>{(candidates2.email === undefined) ? "No data about email" : candidates2.email}</p>

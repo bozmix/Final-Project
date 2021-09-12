@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Modal from "react-modal";
 import { getCandidates } from "../../Services/getCandidates";
 import { getCompanies } from "../../Services/getCompanies";
 import { getDate } from "../../Services/getDate";
@@ -6,7 +7,9 @@ import { getReports } from "../../Services/getReports";
 import imagePlaceholder from "./assets/placeholderImage.png";
 import loadingImage from "./assets/loadingScreen.gif";
 import { getSingleCandidate } from "../../Services/getSingleCandidate";
+import { ModalComponent } from "../ModalComponent/ModalComponent";
 import "./SingleCandidate.css";
+
 
 
 
@@ -17,6 +20,11 @@ export const SingleCandidate = (props) => {
     const [companies, setCompanies] = useState([]);
     const [reports, setReports] = useState([]);
     const [candidate, setCandidate] = useState({});
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [singleReport, setSingleReport] = useState([]);
+
+    let singleCompany = localStorage.getItem("modalNibble");
+
 
 
     useEffect(() => {
@@ -26,9 +34,7 @@ export const SingleCandidate = (props) => {
         getCompanies(props.token).then(companies => {
             setCompanies(companies)
         })
-
-    }, [])
-
+    }, [props.token])
 
 
 
@@ -40,17 +46,28 @@ export const SingleCandidate = (props) => {
                 const filtRep = reports.filter((report) => report.candidateId === candidate.id)
                 setReports(filtRep)
             })
+            reports.map((report) => {
+                if (report.companyName === singleCompany) {
+                    singleReport.push(report)
+                }
+            })
+            console.log(singleReport)
         })
     }, [])
 
 
 
-    console.log("filteredReports", reports)
-    console.log("candidate", candidate)
-    console.log("companies", companies)
 
 
-    if (candidates.length < 1 && companies.length < 1 && reports.length < 1) {
+
+
+
+
+
+
+
+
+    if (candidates.length < 1 && companies.length < 1 && reports.length < 1 && singleReport.length < 1) {
         return (
             <div className="loadingImageDiv">
                 <img className="loadingImage text-center" src={loadingImage} alt="Loading..." />
@@ -75,31 +92,60 @@ export const SingleCandidate = (props) => {
                         <p className="fw-bold">Education:</p>
                         <p className="ms-3">{candidate.education}</p>
                     </div>
-
                 </div>
+
+                <Modal
+                    autoFocus={true}
+                    centered={true}
+                    keyboard={true}
+                    restoreFocus={true}
+                    shouldCloseOnOverlayClick={false}
+                    isOpen={modalIsOpen}
+                    style={{
+                        overlay: {
+                            backgroundColor: 'rgba(1, 1, 1, 0.75)',
+                            padding: "none"
+                        },
+                        content: {
+                            width: '50%',
+                            height: "fit-content",
+                            top: '30%',
+                            left: '25%',
+                        }
+                    }}>
+                    <ModalComponent reports={reports} setModalIsOpen={setModalIsOpen} />
+                </Modal>
+
+
                 <div className="singleCandidateReports m-5">
                     <table className="table table-striped table-hover">
                         <tbody>
                             <tr>
-                                
+
                                 <th><i className="fas fa-caret-down"></i> Company</th>
                                 <th><i className="fas fa-caret-down"></i> Interview Date</th>
                                 <th colSpan="2"><i className="fas fa-caret-down"></i> Status</th>
                             </tr>
 
                             {reports.map((report, index) => (
-                                <tr>
+                                < tr key={index}>
                                     <td className="col-4">{report.companyName}</td>
                                     <td className="col-4">{getDate(report.interviewDate)}</td>
                                     <td className="col-3">{report.status}</td>
-                                    <td className="col-1 text-center"><button><i className="far fa-eye"></i></button></td>
+                                    <td className="col-1 text-center"><button className={report.companyName}
+                                        onClick={() => {
+                                            setModalIsOpen(true)
+                                            localStorage.setItem("modalNibble", report.companyName)
+                                        }} ><i className="far fa-eye"></i></button></td>
                                 </tr>
-                            ))}
+
+                            ))
+                            }
+
                         </tbody>
                     </table>
                 </div>
             </>
-
         )
     }
 
