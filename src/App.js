@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router';
+import Modal from "react-modal";
 import { getToken } from './Services/getToken';
 import { Header } from './components/Header/Header';
 import { Login } from './components/Login/Login';
@@ -9,7 +10,7 @@ import { Candidates } from './components/Candidates/Candidates';
 import { Footer } from './components/Footer/Footer';
 import './App.css';
 
-
+Modal.setAppElement("#root")
 function App() {
 
 
@@ -24,7 +25,6 @@ function App() {
       localStorage.setItem("tokenNibble", tokenResponse);
       token = localStorage.getItem("tokenNibble");
     })
-
   }, [])
 
 
@@ -32,9 +32,8 @@ function App() {
   useEffect(() => {
     getCandidates(token).then(candidates => {
       setCandidates(candidates)
-      console.log('nestoooo', candidates)
     })
-  }, [])
+  }, [token])
 
   const changeLogIn = () => {
     setLoggedIn(!loggedIn)
