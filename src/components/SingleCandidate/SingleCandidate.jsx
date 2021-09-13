@@ -46,24 +46,13 @@ export const SingleCandidate = (props) => {
                 const filtRep = reports.filter((report) => report.candidateId === candidate.id)
                 setReports(filtRep)
             })
-            reports.map((report) => {
+            reports.forEach((report) => {
                 if (report.companyName === singleCompany) {
-                    singleReport.push(report)
+                    setSingleReport(report)
                 }
             })
-            console.log(singleReport)
         })
     }, [])
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -104,7 +93,7 @@ export const SingleCandidate = (props) => {
                     style={{
                         overlay: {
                             backgroundColor: 'rgba(1, 1, 1, 0.75)',
-                            padding: "none"
+                            padding: "none",
                         },
                         content: {
                             width: '50%',
