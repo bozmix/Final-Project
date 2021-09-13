@@ -8,13 +8,13 @@ export const ModalComponent = ({ reports, setModalIsOpen }) => {
     let singleCompany = localStorage.getItem("modalNibble");
     let singleReport = [];
 
-    reports.map((report) => {
+    reports.forEach((report) => {
         if (report.companyName === singleCompany) {
             singleReport.push(report)
         }
     })
 
-    console.log(singleReport)
+
 
     return (
         <div className="containerModal">
