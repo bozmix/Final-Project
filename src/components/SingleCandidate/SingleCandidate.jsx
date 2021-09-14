@@ -75,7 +75,7 @@ export const SingleCandidate = (props) => {
                         <p className="fw-bold">Email:</p>
                         <p className="ms-3">{candidate.email}</p>
                     </div>
-                    <div className="birthEducation col-4 ">
+                    <div className="birthEducation col-4 my-3">
                         <p className="fw-bold">Date of birth:</p>
                         <p className="ms-3">{getDate(candidate.birthday)}</p>
                         <p className="fw-bold">Education:</p>
@@ -117,7 +117,7 @@ export const SingleCandidate = (props) => {
                             </tr>
 
                             {reports.map((report, index) => (
-                                < tr className="row" key={index}>
+                                < tr className="col-4" key={index}>
                                     <td className="col-4">{report.companyName}</td>
                                     <td className="col-4">{getDate(report.interviewDate)}</td>
                                     <td className="col-3">{report.status}</td>

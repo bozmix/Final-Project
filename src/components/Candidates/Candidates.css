@@ -15,9 +15,6 @@ img {
     height: 100vh;
 }
 
-.noUsersDiv img {
-    width: 20%;
-}
 .user-pic {
     overflow: hidden;
     border-radius: 100%;
@@ -61,6 +58,8 @@ main {
 .search:hover {
 	border: 1px solid #9ebddf;
 }
+
+
 a {
     text-decoration: none;
 }

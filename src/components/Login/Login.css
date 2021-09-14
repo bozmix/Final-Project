@@ -30,7 +30,7 @@
  /* FORM TYPOGRAPHY*/
 
  #inputSubmit {
-     background-color: #56baed;
+     background-color: #9ebddf;
      border: none;
      color: white;
      padding: 15px 80px;
@@ -51,9 +51,6 @@
      transition: all 0.3s ease-in-out;
  }
 
- #inputSubmit :hover {
-     background-color: #39ace7;
- }
 
  #inputSubmit :active {
      -moz-transform: scale(0.95);
@@ -86,7 +83,7 @@
 
  #inputLogin:focus {
      background-color: #fff;
-     border-bottom: 2px solid #5fbae9;
+     border-bottom: 2px solid #9ebddf;;
  }
 
  #inputLogin:placeholder {
@@ -116,7 +113,7 @@
 
  #inputPassword:focus {
      background-color: #fff;
-     border-bottom: 2px solid #5fbae9;
+     border-bottom: 2px solid #9ebddf;
  }
 
  #inputPassword:placeholder {

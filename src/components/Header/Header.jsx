@@ -11,32 +11,21 @@ export const Header = ({ changeLogIn }) => {
   return (
     <header className="container-fluid">
       <nav className="navbar navbar-expand-lg bg-light fixed-top">
-        <div className="container-fluid">
-          <Link className="interviewsReports" to="/home">
-            <h1 className="text-dark ms-5">Interviews Reports</h1>
+        <div className="container-fluid raw">
+          <Link className="interviewsReports sm-col-12 md-col-6" to="/home">
+            <h1 className="ms-5 ">Interviews Reports</h1>
           </Link>
-          <button
-            class="navbar-toggler text-uppercase font-weight-bold  text-dark rounded me-5"
-            type="button"
-          >
-            Menu
-            <i class="fas fa-bars"></i>
-          </button>
-          <div class="collapse navbar-collapse justify-content-lg-end">
-            <Link className="candidatesLinks" to="/home">
+          <div className="justify-content-lg-end raw">
+            <Link className="candidatesLinks " to="/home">
               <button
                 type="button"
-                className="btnCandidates btn btn-light me-5 ps-5 pe-5"
-              >
-                Candidates
+                className="btnCandidates btn btn-light me-5 ps-5 pe-5 ms-sm-5 " >Candidates
               </button>
             </Link>
             <button
               type="button"
               onClick={logOut}
-              className="btnLogOut btn btn-light me-5 ps-5 pe-5"
-            >
-              Log Out
+              className="btnLogOut btn btn-light me-5 ps-5 pe-5"> Log Out
             </button>
           </div>
         </div>

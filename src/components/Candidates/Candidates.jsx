@@ -24,14 +24,14 @@ export const Candidates = ({ candidates }) => {
     } else if (filteredCandidates.length < 1) {
         return (
             <>
-            <search className="container-fluid">
+            <div className="container-fluid">
                 <nav className="navbar navbar-light bg-light">
                     <span className="navbar-brand mb-0 h1 ms-5">Candidates</span>
                     <div className="form-inline me-5">
                         <input className="form-control search text-muted" type="search" placeholder="...Search" aria-label="Search" onChange={filterCandidates}></input>
                     </div>
                 </nav>
-                </search>
+                </div>
                 <div className="noUsersDiv">
                     <img className="noUsersImage text-center img-fluid mx-auto d-block" src={noUsersImage} alt="No users that match your search" />
                     <p className="text-center fw-bold fs-3">There are no users that match your search.</p>
@@ -43,10 +43,12 @@ export const Candidates = ({ candidates }) => {
         return (
             <main className="backround">
             <search className="container-fluid">
-                <nav className="navbar  navbar-light bg-light">
-                    <span className="navbar-brand mb-0 h1 ms-5">Candidates</span>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="container-fluid raw me-5">
+                    <span className="navbar-brand mb-0 h1 ms-5 col-sm-12 col-md-6 ">Candidates</span>
                     <div className="form-inline me-5">
-                        <input className="form-control search" type="search" placeholder="...Search" aria-label="Search" onChange={filterCandidates}></input>
+                        <input className="form-control search ms-sm-5" type="search" placeholder="...Search" aria-label="Search" onChange={filterCandidates}></input>
+                    </div>
                     </div>
                 </nav>
                 </search>
@@ -65,7 +67,7 @@ export const Candidates = ({ candidates }) => {
                                     <div class="card-box text-center">
                                     <div class="user-pic">
                                     <figure>
-                                    <img className='img-responsive' src='https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png' alt="profileCandidate" />
+                                    <img className='img-responsive' src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png' alt="profileCandidate" />
                                     </figure>
                                     </div>
                                     <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name}</h4>

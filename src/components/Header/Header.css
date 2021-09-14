@@ -1,13 +1,19 @@
 .interviewsReports {
     text-decoration: none;
+    color: black;
 }
-header {
-    margin-bottom: 60px;
-}
-.btnLogOut:hover {
-	border: 1px solid #9ebddf;
+.interviewsReports:hover  {
+  color: #9ebddf;
 }
 
+header {
+    margin-bottom: 80px;
+}
+
+.btnLogOut:hover {
+	border: 1px solid #9ebddf;
+    color:  #9ebddf;
+}
 .btnLogOut {
     padding: 4px;
     background-color: #fdfdfd;
@@ -19,6 +25,7 @@ header {
 }
 .btnCandidates:hover {
 	border: 1px solid #9ebddf;
+    color:  #9ebddf;
 }
 
 .btnCandidates {
