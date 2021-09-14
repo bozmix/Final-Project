@@ -9,14 +9,14 @@ export const Header = ({ changeLogIn }) => {
   };
 
   return (
-    <header className="container">
+    <header className="container-fluid">
       <nav className="navbar navbar-expand-lg bg-light fixed-top">
         <div className="container-fluid">
           <Link className="interviewsReports" to="/home">
             <h1 className="text-dark ms-5">Interviews Reports</h1>
           </Link>
           <button
-            class="navbar-toggler text-uppercase font-weight-bold  text-dark rounded"
+            class="navbar-toggler text-uppercase font-weight-bold  text-dark rounded me-5"
             type="button"
           >
             Menu

@@ -2,17 +2,7 @@ div {
     color: black;
 }
 
-.candidates {
-    margin: 0 auto;
-}
 
-.candidate {
-    width: 22%;
-    display: inline-block;
-    margin: 10px;
-    text-align: center;
-    box-shadow: -1px 6px 11px 0px rgba(0, 0, 0, 0.63);
-}
 
 img {
     width: 100%;
@@ -27,10 +17,34 @@ img {
     height: 100vh;
 }
 
-.candidates {
-    margin-bottom: 100px;
-}
+
 
 .noUsersDiv img {
     width: 20%;
+}
+.user-pic {
+    overflow: hidden;
+    border-radius: 100%;
+    margin: 20px auto;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-top: 3px solid #007bff;
+    border-bottom: 3px solid #007bff;
+    transition: 0.5s;
+}
+.card-box:hover .user-pic {
+    transform: rotate(0deg);
+    transform: scale(1.1);
+}
+.card-box {
+    padding: 15px;
+    background-color: #fdfdfd;
+    margin: 20px 0px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0px 0px 8px 0px #d4d4d4;
+    transition: 0.5s;
+}
+.card-box:hover {
+	border: 1px solid #007bff;
 }
