@@ -26,7 +26,7 @@ export const Header = ({ changeLogIn }) => {
             <Link className="candidatesLinks" to="/home">
               <button
                 type="button"
-                className="btnCandidates btn btn-light btn-outline-secondary me-5 ps-5 pe-5"
+                className="btnCandidates btn btn-light me-5 ps-5 pe-5"
               >
                 Candidates
               </button>
@@ -34,7 +34,7 @@ export const Header = ({ changeLogIn }) => {
             <button
               type="button"
               onClick={logOut}
-              className="btnLogOut btn btn-light btn-outline-secondary me-5 ps-5 pe-5"
+              className="btnLogOut btn btn-light me-5 ps-5 pe-5"
             >
               Log Out
             </button>

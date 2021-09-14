@@ -26,9 +26,9 @@ export const Candidates = ({ candidates }) => {
             <>
             <search className="container-fluid">
                 <nav className="navbar navbar-light bg-light">
-                    <span className="navbar-brand mb-0 h1 ms-5 me-5">Candidates</span>
-                    <div className="form-inline ms-5 me-5">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={filterCandidates}></input>
+                    <span className="navbar-brand mb-0 h1 ms-5">Candidates</span>
+                    <div className="form-inline me-5">
+                        <input className="form-control search text-muted" type="search" placeholder="...Search" aria-label="Search" onChange={filterCandidates}></input>
                     </div>
                 </nav>
                 </search>
@@ -41,18 +41,18 @@ export const Candidates = ({ candidates }) => {
 
     } else {
         return (
-            <>
+            <main className="backround">
             <search className="container-fluid">
-                <nav className="navbar navbar-light bg-light">
-                    <span className="navbar-brand mb-0 h1 ms-5 me-5">Candidates</span>
-                    <div className="form-inline ms-5 me-5">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={filterCandidates}></input>
+                <nav className="navbar  navbar-light bg-light">
+                    <span className="navbar-brand mb-0 h1 ms-5">Candidates</span>
+                    <div className="form-inline me-5">
+                        <input className="form-control search" type="search" placeholder="...Search" aria-label="Search" onChange={filterCandidates}></input>
                     </div>
                 </nav>
                 </search>
 
                 <div class="container-fluid ">
-                <div class="row justify-content-center ms-5 me-5 ">
+                <div class="row justify-content-center ms-5 me-5">
                     {filteredCandidates.map((candidates2, index) => {
                         return (
                             <div class="col-md-6 col-lg-4 mb-5">
@@ -78,7 +78,7 @@ export const Candidates = ({ candidates }) => {
                     })}
                 </div>
                 </div>
-            </>
+            </main>
         )
     }
 }

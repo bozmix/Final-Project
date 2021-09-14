@@ -2,8 +2,6 @@ div {
     color: black;
 }
 
-
-
 img {
     width: 100%;
 }
@@ -17,8 +15,6 @@ img {
     height: 100vh;
 }
 
-
-
 .noUsersDiv img {
     width: 20%;
 }
@@ -28,9 +24,12 @@ img {
     margin: 20px auto;
     border-left: 3px solid #ddd;
     border-right: 3px solid #ddd;
-    border-top: 3px solid #007bff;
-    border-bottom: 3px solid #007bff;
+    border-top: 3px solid #9ebddf;
+    border-bottom: 3px solid #9ebddf;
     transition: 0.5s;
+}
+main {
+    background-color: #ddd;
 }
 .card-box:hover .user-pic {
     transform: rotate(0deg);
@@ -45,6 +44,25 @@ img {
     box-shadow: 0px 0px 8px 0px #d4d4d4;
     transition: 0.5s;
 }
+
 .card-box:hover {
-	border: 1px solid #007bff;
+	border: 1px solid #9ebddf;
 }
+
+.search {
+    padding: 4px;
+    background-color: #fdfdfd;
+    margin: 10px 0px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0px 0px 8px 0px #d4d4d4;
+    transition: 0.5s;
+}
+.search:hover {
+	border: 1px solid #9ebddf;
+}
+a {
+    text-decoration: none;
+}
+
+        

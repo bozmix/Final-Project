@@ -2,5 +2,31 @@
     text-decoration: none;
 }
 header {
-    margin-bottom: 80px;
+    margin-bottom: 60px;
+}
+.btnLogOut:hover {
+	border: 1px solid #9ebddf;
+}
+
+.btnLogOut {
+    padding: 4px;
+    background-color: #fdfdfd;
+    margin: 10px 0px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0px 0px 8px 0px #d4d4d4;
+    transition: 0.5s;
+}
+.btnCandidates:hover {
+	border: 1px solid #9ebddf;
+}
+
+.btnCandidates {
+    padding: 4px;
+    background-color: #fdfdfd;
+    margin: 10px 0px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0px 0px 8px 0px #d4d4d4;
+    transition: 0.5s;
 }

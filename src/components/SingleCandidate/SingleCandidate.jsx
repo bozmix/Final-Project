@@ -66,16 +66,16 @@ export const SingleCandidate = (props) => {
         return (
             <>
                 <div className="singleCandidateInfo row p-5">
-                    <div className="profilePhoto col-4">
-                        <img className="imagePlaceholder" src={imagePlaceholder} alt="candidateProfilePicture"></img>
+                    <div className="profilePhoto col-sm-12 col-md-4">
+                        <img className="imagePlaceholder my-3" src={imagePlaceholder} alt="candidateProfilePicture"></img>
                     </div>
-                    <div className="nameEmail col-4 p-5">
+                    <div className="nameEmail col-sm-12 col-md-4 my-3">
                         <p className="fw-bold">Name:</p>
                         <p className="ms-3">{candidate.name}</p>
                         <p className="fw-bold">Email:</p>
                         <p className="ms-3">{candidate.email}</p>
                     </div>
-                    <div className="birthEducation col-4 p-5">
+                    <div className="birthEducation col-4 ">
                         <p className="fw-bold">Date of birth:</p>
                         <p className="ms-3">{getDate(candidate.birthday)}</p>
                         <p className="fw-bold">Education:</p>
@@ -106,7 +106,7 @@ export const SingleCandidate = (props) => {
                 </Modal>
 
 
-                <div className="singleCandidateReports m-5">
+                <div className="singleCandidateReports mx-5">
                     <table className="table table-striped table-hover">
                         <tbody>
                             <tr>
@@ -117,7 +117,7 @@ export const SingleCandidate = (props) => {
                             </tr>
 
                             {reports.map((report, index) => (
-                                < tr key={index}>
+                                < tr className="row" key={index}>
                                     <td className="col-4">{report.companyName}</td>
                                     <td className="col-4">{getDate(report.interviewDate)}</td>
                                     <td className="col-3">{report.status}</td>
