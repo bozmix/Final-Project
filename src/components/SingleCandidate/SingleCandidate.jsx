@@ -70,7 +70,8 @@ export const SingleCandidate = (props) => {
                        <div class="user-pic">
                             <figure>
                                 <img
-                                    src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+                                    src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png
+                                    "
                                     class="img-responsive"
                                     alt="candidateProfilePicture"
                                 ></img>
@@ -114,7 +115,7 @@ export const SingleCandidate = (props) => {
                 </Modal>
 
 
-                <div className="singleCandidateReports mx-5">
+                <div className="singleCandidateReports mx-5  mb-5">
                     <table className="table table-striped table-hover">
                         <tbody>
                             <tr>

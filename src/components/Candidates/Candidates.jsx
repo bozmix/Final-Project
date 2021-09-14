@@ -28,7 +28,7 @@ export const Candidates = ({ candidates }) => {
                 <nav className="navbar navbar-light bg-light">
                     <span className="navbar-brand mb-0 h1 ms-5">Candidates</span>
                     <div className="form-inline me-5">
-                        <input className="form-control search text-muted" type="search" placeholder="...Search" aria-label="Search" onChange={filterCandidates}></input>
+                        <input className="form-control search text-center" type="search" placeholder="Search" aria-label="Search" onChange={filterCandidates}></input>
                     </div>
                 </nav>
                 </div>
@@ -44,10 +44,10 @@ export const Candidates = ({ candidates }) => {
             <main className="backround">
             <search className="container-fluid">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid raw">
+                <div className="container-fluid">
                     <span className="navbar-brand mb-0 h1 ms-5 col-sm-12 col-md-6 ">Candidates</span>
-                    <div className="form-inline me-5">
-                        <input className="form-control search ms-sm-5" type="search" placeholder="...Search" aria-label="Search" onChange={filterCandidates}></input>
+                    <div className="form-inline">
+                        <input className="form-control search col-sm-12 ms-md-1 ms-sm-5" type="search" placeholder="...Search" aria-label="Search" onChange={filterCandidates}></input>
                     </div>
                     </div>
                 </nav>
@@ -67,7 +67,8 @@ export const Candidates = ({ candidates }) => {
                                     <div class="card-box text-center">
                                     <div class="user-pic">
                                     <figure>
-                                    <img className='img-responsive' src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png' alt="profileCandidate" />
+                                    <img className='img-responsive' src='https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png
+' alt="profileCandidate" />
                                     </figure>
                                     </div>
                                     <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name}</h4>
