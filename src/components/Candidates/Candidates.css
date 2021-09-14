@@ -45,7 +45,9 @@ main {
 .card-box:hover {
 	border: 1px solid #9ebddf;
 }
-
+input:hover::placeholder  {
+    color: #9ebddf ;
+}
 .search {
     padding: 4px;
     background-color: #fdfdfd;

@@ -44,7 +44,7 @@ export const Candidates = ({ candidates }) => {
             <main className="backround">
             <search className="container-fluid">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid raw me-5">
+                <div className="container-fluid raw">
                     <span className="navbar-brand mb-0 h1 ms-5 col-sm-12 col-md-6 ">Candidates</span>
                     <div className="form-inline me-5">
                         <input className="form-control search ms-sm-5" type="search" placeholder="...Search" aria-label="Search" onChange={filterCandidates}></input>

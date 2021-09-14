@@ -1,5 +1,17 @@
-.imagePlaceholder {
-    width: 100%;
+.user-pic {
+    overflow: hidden;
+    border-radius: 100%;
+    margin: 20px auto;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-top: 3px solid #9ebddf;
+    border-bottom: 3px solid #9ebddf;
+    transition: 0.5s;
+}
+
+.user-pic:hover {
+    transform: rotate(0deg);
+    transform: scale(1.1);
 }
 
 table {

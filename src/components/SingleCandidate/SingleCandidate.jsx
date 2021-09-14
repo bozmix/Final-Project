@@ -67,18 +67,26 @@ export const SingleCandidate = (props) => {
             <>
                 <div className="singleCandidateInfo row p-5">
                     <div className="profilePhoto col-sm-12 col-md-4">
-                        <img className="imagePlaceholder my-3" src={imagePlaceholder} alt="candidateProfilePicture"></img>
+                       <div class="user-pic">
+                            <figure>
+                                <img
+                                    src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+                                    class="img-responsive"
+                                    alt="candidateProfilePicture"
+                                ></img>
+                            </figure>
+                        </div>
                     </div>
-                    <div className="nameEmail col-sm-12 col-md-4 my-3">
-                        <p className="fw-bold">Name:</p>
+                    <div className="nameEmail col-sm-12 col-md-4 my-auto">
+                        <h4 className="fw-bold">Name:</h4>
                         <p className="ms-3">{candidate.name}</p>
-                        <p className="fw-bold">Email:</p>
+                        <h4 className="fw-bold">Email:</h4>
                         <p className="ms-3">{candidate.email}</p>
                     </div>
-                    <div className="birthEducation col-4 my-3">
-                        <p className="fw-bold">Date of birth:</p>
+                    <div className="birthEducation col-4 my-auto">
+                        <h4 className="fw-bold">Date of birth:</h4>
                         <p className="ms-3">{getDate(candidate.birthday)}</p>
-                        <p className="fw-bold">Education:</p>
+                        <h4 className="fw-bold">Education:</h4>
                         <p className="ms-3">{candidate.education}</p>
                     </div>
                 </div>

@@ -7,8 +7,10 @@
 }
 
 header {
+   background-color: rgb(45, 46, 49);
     margin-bottom: 80px;
 }
+
 
 .btnLogOut:hover {
 	border: 1px solid #9ebddf;
