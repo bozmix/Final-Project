@@ -77,7 +77,7 @@ export const SingleCandidate = (props) => {
                             </figure>
                         </div>
                     </div>
-                    <div className="nameEmail col-sm-12 col-md-4 my-auto">
+                    <div className="nameEmail col-sm-12 col-md-4  my-auto">
                         <h4 className="fw-bold">Name:</h4>
                         <p className="ms-3">{candidate.name}</p>
                         <h4 className="fw-bold">Email:</h4>
@@ -101,8 +101,6 @@ export const SingleCandidate = (props) => {
                     style={{
                         overlay: {
                             backgroundColor: 'rgba(1, 1, 1, 0.75)',
-                            padding: 'none',
-                            position: 'fixed',
                             alignItems: 'center',
                         },
                         content: {
@@ -110,7 +108,7 @@ export const SingleCandidate = (props) => {
                             height: 'fit-content',
                             top: '30%',
                             left: '25%',
-                            position: 'absolute',
+                        
                           
                         }
                     }}>

@@ -70,6 +70,7 @@ input::placeholder  {
     border: 1px solid #eee;
     box-shadow: 0px 0px 8px 0px #d4d4d4;
     transition: 0.5s;
+    
 }
 
 .search input {
@@ -83,5 +84,13 @@ input::placeholder  {
 a {
     text-decoration: none;
 }
+
+@media screen and (max-width: 992px) {
+    .search {
+    position: relative;
+    top: 100px;
+    }
+  }
+  
 
         

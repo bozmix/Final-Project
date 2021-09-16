@@ -24,7 +24,7 @@ export const ModalComponent = ({ reports, setModalIsOpen }) => {
             <hr className="hrLineModal" />
 
             <div className="row popUp">
-                <div className="candidateInfoPopUp ms-5 col-sm-4">
+                <div className="candidateInfoPopUp ms-lg-5 col-sm-4">
                     <p className="m-0 mt-2 text-black-50">Company</p>
                     <p className="m-0 h4 mb-2">{singleReport[0].companyName}</p>
                     <p className="m-0 text-black-50">Interview Date</p>
