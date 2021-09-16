@@ -101,13 +101,16 @@ export const SingleCandidate = (props) => {
                     style={{
                         overlay: {
                             backgroundColor: 'rgba(1, 1, 1, 0.75)',
-                            padding: "none",
+                            padding: 'none',
+                            position: 'fixed',
+                            alignItems: 'center',
                         },
                         content: {
                             width: '50%',
-                            height: "fit-content",
+                            height: 'fit-content',
                             top: '30%',
                             left: '25%',
+                            position: 'absolute',
                           
                         }
                     }}>

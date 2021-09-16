@@ -24,7 +24,7 @@ export const Candidates = ({ candidates }) => {
     } else if (filteredCandidates.length < 1) {
         return (
             <>
-            <div className="container-fluid">
+            <div className="container-fluid mb-5">
                 <nav className="navbar navbar-light bg-light">
                     <span className="navbar-brand mb-0 h1 ms-5">Candidates</span>
                     <div className="form-inline me-5">
@@ -41,7 +41,7 @@ export const Candidates = ({ candidates }) => {
 
     } else {
         return (
-            <main className="backround">
+            <main className="backround ">
                 <search className="d-flex flex-row justify-content-between mx-5">
                     <span className="h3 mt-3 col-sm-12 col-md-6 mx-3">Candidates</span>
                     <div className="form-inline col-sm-2">

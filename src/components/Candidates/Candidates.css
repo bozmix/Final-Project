@@ -35,6 +35,7 @@ hr {
 }
 main {
     background-color: #ddd;
+    padding-top: 100px;
 }
 .card-box:hover .user-pic {
     transform: rotate(0deg);

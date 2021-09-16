@@ -10,7 +10,9 @@ export const Header = ({ changeLogIn }) => {
 
   return (
     <header className="container-fluid">
-      <nav className="navbar navbar-expand-lg bg-light fixed-top">
+      <nav class="navbar navbar-default ">
+      </nav>   
+      <nav className="navbar navbar-default navbar-expand-lg bg-light fixed-top">
         <div className="container-fluid">
           <Link className="interviewsReports sm-col-12 md-col-4" to="/home">
             <h1 className="ms-5">Interviews Reports</h1>
