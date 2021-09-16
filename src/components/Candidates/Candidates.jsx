@@ -42,16 +42,14 @@ export const Candidates = ({ candidates }) => {
     } else {
         return (
             <main className="backround">
-            <search className="container-fluid">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid">
-                    <span className="navbar-brand mb-0 h1 ms-5 col-sm-12 col-md-6 ">Candidates</span>
-                    <div className="form-inline">
-                        <input className="form-control search col-sm-12 ms-md-1 ms-sm-5" type="search" placeholder="...Search" aria-label="Search" onChange={filterCandidates}></input>
+                <search className="d-flex flex-row justify-content-between mx-5">
+                    <span className="h3 mt-3 col-sm-12 col-md-6 mx-3">Candidates</span>
+                    <div className="form-inline col-sm-2">
+                        <input className="form-control search mt-3 me-3" type="search" placeholder="...Search" aria-label="Search" onChange={filterCandidates}></input>
                     </div>
-                    </div>
-                </nav>
                 </search>
+                <hr></hr>
+              
 
                 <div class="container-fluid ">
                 <div class="row justify-content-center ms-5 me-5">
@@ -68,7 +66,7 @@ export const Candidates = ({ candidates }) => {
                                     <div class="user-pic">
                                     <figure>
                                     <img className='img-responsive' src='https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png
-' alt="profileCandidate" />
+                                    ' alt="profileCandidate" />
                                     </figure>
                                     </div>
                                     <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name}</h4>

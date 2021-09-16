@@ -10,7 +10,11 @@ img {
     display: flex;
     justify-content: center;
 }
-
+hr {
+    width: 95%;
+    margin: 0 auto;
+    border: 1px solid #9ebddf;
+}
 .loadingImage {
     height: 100vh;
 }
