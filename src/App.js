@@ -8,6 +8,7 @@ import { getCandidates } from './Services/getCandidates';
 import { SingleCandidate } from './components/SingleCandidate/SingleCandidate';
 import { Candidates } from './components/Candidates/Candidates';
 import { Footer } from './components/Footer/Footer';
+import { Reports } from './components/Reports/Reports';
 import './App.css';
 
 Modal.setAppElement("#root")
@@ -41,6 +42,7 @@ function App() {
 
 
 
+
   return (
     <div className="App">
       {
@@ -50,7 +52,8 @@ function App() {
             <Header changeLogIn={changeLogIn} />
             <Switch>
               <Route path='/home' component={() => <Candidates candidates={candidates} />} />
-              <Route path='/SingleCandidate/:id' component={(props) => <SingleCandidate {...props} token={token} />} />
+              <Route path='/single-candidate/:id' component={(props) => <SingleCandidate {...props} token={token} />} />
+              <Route path='/reports' component={(props) => <Reports {...props} token={token} />} />
               <Redirect from='/' to='/home' />
             </Switch>
           </>

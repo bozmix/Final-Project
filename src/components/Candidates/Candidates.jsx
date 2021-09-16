@@ -16,6 +16,8 @@ export const Candidates = ({ candidates }) => {
         setFilteredCandidates(filterCand)
     }
 
+
+
     if (candidates.length < 1) {
         return (
             <div className="loadingImageDiv">
@@ -37,23 +39,20 @@ export const Candidates = ({ candidates }) => {
                 </div>
             </>
         )
-
-
-
     } else {
         return (
             <>
                 <nav className="navbar navbar-light bg-light">
                     <span className="navbar-brand mb-0 h1 ms-5 me-5">Candidates</span>
                     <div className="form-inline ms-5 me-5">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={filterCandidates}></input>
+                        <input className="form-control mr-sm-2" id="searchInput" type="search" placeholder="Search" aria-label="Search" onChange={filterCandidates}></input>
                     </div>
                 </nav>
 
                 <div className='candidates ms-5'>
                     {filteredCandidates.map((candidates2, index) => {
                         return (
-                            <Link to={`/SingleCandidate/${candidates2.id}`} key={index}>
+                            <Link to={`/single-candidate/${candidates2.id}`} key={index}>
                                 <div className='candidate'>
                                     <div className='image'>
                                         <img src='https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png' alt="profileCandidate" />
