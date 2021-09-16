@@ -7,7 +7,6 @@ div {
 }
 
 .candidate {
-    width: 22%;
     display: inline-block;
     margin: 10px;
     text-align: center;
@@ -29,6 +28,7 @@ img {
 
 .candidates {
     margin-bottom: 100px;
+    
 }
 
 .noUsersDiv img {
