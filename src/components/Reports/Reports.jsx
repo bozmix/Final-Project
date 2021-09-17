@@ -14,7 +14,20 @@ export const Reports = (props) => {
         getReports(props.token).then(reports => {
             setReports(reports.slice(0, 24))
         })
-    }, [props.token])
+    }, [props.token, reports])
+
+
+    const deleteRequest = (token) => {
+        let reportId = localStorage.getItem("modalNibble");
+        return fetch("http://localhost:3333/api/reports/" + reportId, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+        })
+            .then(data => data.json())
+            .then(info => info)
+    }
 
 
     return (
@@ -42,7 +55,7 @@ export const Reports = (props) => {
                 </Modal>
                 {reports.map((report, index) => {
                     return (
-                        <div className="singleCompanyCandidateReport bg-white p-1 ps-3 pe-3 ms-5 me-5" key={index}>
+                        <div className="singleCompanyCandidateReport bg-info p-1 ps-3 pe-3 ms-5 me-5 m-2" key={index}>
 
                             <div className="companyNameReport col-3"><div className="me-5 col fw-bold">{report.companyName}</div><div className="me-5 text-black-50">Company</div></div>
 
@@ -56,7 +69,10 @@ export const Reports = (props) => {
                                 <button className={report.companyName} onClick={() => {
                                     setModalIsOpen(true)
                                     localStorage.setItem("modalNibble", report.id)
-                                }} className="me-5"><i className="far fa-eye "></i></button> <button className="me-2"><i className="fas fa-times"></i></button>
+                                }} className="me-5"><i className="far fa-eye "></i></button> <button onClick={() => {
+                                    localStorage.setItem("modalNibble", report.id)
+                                    deleteRequest(props.token)
+                                }} className="me-2"><i className="fas fa-times"></i></button>
                             </div>
 
                         </div>
