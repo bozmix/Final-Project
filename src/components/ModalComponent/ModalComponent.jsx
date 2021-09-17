@@ -35,7 +35,7 @@ export const ModalComponent = ({ reports, setModalIsOpen }) => {
                     <p className="m-0 mb-3 h4 mb-2">{singleReport[0].status}</p>
                 </div>
 
-                <div className="candidateNotes me-5 col-6">
+                <div className="candidateNotes me-5 ms-5 col-6">
                     <p className="m-0 mb-1 mt-2 text-black-50 notesModal">Notes</p>
                     <p className="m-0 mb-3 notesTextModal">{singleReport[0].note}</p>
                 </div>
