@@ -3,12 +3,45 @@ import { Link } from 'react-router-dom';
 import loadingImage from "./assets/loadingScreen.gif";
 import noUsersImage from "./assets/noUsersImage.jpg";
 import "./Candidates.css";
+import avatar0 from "./assets/avatar0.png";
+import avatar1 from "./assets/avatar1.png";
+import avatar2 from "./assets/avatar2.png";
+import avatar3 from "./assets/avatar3.png";
+import avatar4 from "./assets/avatar4.png";
+import avatar5 from "./assets/avatar5.png";
+import avatar6 from "./assets/avatar6.png";
 
-import avatar from "./assets/avatar.png";
+const projects = [{
+    photo: avatar0,
+    text:"first project"
+},
+{
+    photo: avatar1,
+    text:"second project"
+},
+{
+    photo: avatar2,
+    text:"third project"
+},
+{
+    photo: avatar3,
+    text:"fourth project"
+},
+{
+    photo: avatar4,
+    text:"fift project"
+},
+{
+    photo: avatar5,
+    text:"six project"
+},
+{
+    photo: avatar6,
+    text:"seven project"
+}
 
+]
 
-
-  
 export const Candidates = ({ candidates }) => {
 
     const [filteredCandidates, setFilteredCandidates] = useState(candidates);
@@ -32,8 +65,8 @@ export const Candidates = ({ candidates }) => {
             <div className="container-fluid mb-5">
                 <nav className="navbar navbar-light bg-light">
                     <span className="navbar-brand mb-0 h1 ms-5">Candidates</span>
-                    <div className="form-inline me-5 ">
-                        <input className="form-control search text-center mt-sm-5 mt-lg-1" type="search" placeholder="Search" aria-label="Search" onChange={filterCandidates}></input>
+                    <div className="form-inline me-5">
+                        <input className="form-control search text-center" type="search" placeholder="Search" aria-label="Search" onChange={filterCandidates}></input>
                     </div>
                 </nav>
                 </div>
@@ -70,7 +103,12 @@ export const Candidates = ({ candidates }) => {
                                     <div class="card-box text-center">
                                     <div class="user-pic">
                                     <figure>
-                                    <img className='img-responsive' src={avatar} />
+                                    
+                    <img className='img-responsive'
+                    src={projects[index].photo}
+                    />
+              
+                                   
                                     </figure>
                                     </div>
                                     <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name}</h4>

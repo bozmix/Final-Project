@@ -7,6 +7,7 @@ import { getReports } from "../../Services/getReports";
 import loadingImage from "./assets/loadingScreen.gif";
 import { getSingleCandidate } from "../../Services/getSingleCandidate";
 import { ModalComponent } from "../ModalComponent/ModalComponent";
+import avatar from "./assets/avatar.png"
 import "./SingleCandidate.css";
 
 
@@ -69,8 +70,7 @@ export const SingleCandidate = (props) => {
                        <div class="user-pic">
                             <figure>
                                 <img
-                                    src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png
-                                    "
+                                    src={avatar}
                                     class="img-responsive"
                                     alt="candidateProfilePicture"
                                 ></img>
