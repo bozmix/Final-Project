@@ -4,7 +4,6 @@ import { getCandidates } from "../../Services/getCandidates";
 import { getCompanies } from "../../Services/getCompanies";
 import { getDate } from "../../Services/getDate";
 import { getReports } from "../../Services/getReports";
-import imagePlaceholder from "./assets/placeholderImage.png";
 import loadingImage from "./assets/loadingScreen.gif";
 import { getSingleCandidate } from "../../Services/getSingleCandidate";
 import { ModalComponent } from "../ModalComponent/ModalComponent";

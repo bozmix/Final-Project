@@ -28,7 +28,7 @@ export const Candidates = ({ candidates }) => {
     } else if (filteredCandidates.length < 1) {
         return (
             <>
-                <nav className="navbar navbar-light bg-light">
+                <nav className="navbar navbar-light bg-light col-xs-12 fixed-top">
                     <span className="navbar-brand mb-0 h1 ms-5 me-5">Candidates</span>
                     <div className="form-inline ms-5 me-5">
                         <input className="form-control col-xs-12 me-xs-1" type="search" placeholder="Search" aria-label="Search" onChange={filterCandidates}></input>
@@ -54,7 +54,7 @@ export const Candidates = ({ candidates }) => {
                     {filteredCandidates.map((candidates2, index) => {
                         return (
                             <Link to={`/single-candidate/${candidates2.id}`} key={index}>
-                                <div className="candidate">
+                                <div className="candidate  col-xs-12">
                                     <div className='image'>
                                         <img src={avatar} alt="profileCandidate" />
                                     </div>
