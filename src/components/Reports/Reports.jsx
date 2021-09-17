@@ -25,8 +25,11 @@ export const Reports = (props) => {
                 Authorization: `Bearer ${token}`
             },
         })
-            .then(data => data.json())
-            .then(info => info)
+            .then(response => console.log(response))
+    }
+
+    const createNewReport = () => {
+        
     }
 
 
@@ -53,6 +56,9 @@ export const Reports = (props) => {
                     }}>
                     <ModalComponent reports={reports} setModalIsOpen={setModalIsOpen} />
                 </Modal>
+                <div className="text-end m-3 me-5">
+                    <button onClick={createNewReport} className="btn btn-info text-center">Create New Report</button>
+                </div>
                 {reports.map((report, index) => {
                     return (
                         <div className="singleCompanyCandidateReport bg-info p-1 ps-3 pe-3 ms-5 me-5 m-2" key={index}>
@@ -76,7 +82,6 @@ export const Reports = (props) => {
                             </div>
 
                         </div>
-
 
                     )
                 })}
