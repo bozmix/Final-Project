@@ -11,7 +11,7 @@ export const ModalComponent = ({ reports, setModalIsOpen }) => {
 
     useEffect(() =>
         reports.forEach((report) => {
-            if (report.id == singleId) {
+            if (report.id.toString() === singleId) {
                 setSingleReport(report)
             }
         }), [setModalIsOpen])
