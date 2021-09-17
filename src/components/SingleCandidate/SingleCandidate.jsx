@@ -23,7 +23,7 @@ export const SingleCandidate = (props) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [singleReport, setSingleReport] = useState([]);
 
-    let singleCompany = localStorage.getItem("modalNibble");
+    let singleId = localStorage.getItem("modalNibble");
 
 
 
@@ -47,12 +47,12 @@ export const SingleCandidate = (props) => {
                 setReports(filtRep)
             })
             reports.forEach((report) => {
-                if (report.companyName === singleCompany) {
+                if (report.companyName === singleId) {
                     setSingleReport(report)
                 }
             })
         })
-    }, [])
+    }, [props.token])
 
 
 
@@ -86,7 +86,6 @@ export const SingleCandidate = (props) => {
                 <Modal
                     autoFocus={true}
                     centered={true}
-                    keyboard={true}
                     restoreFocus={true}
                     shouldCloseOnOverlayClick={false}
                     isOpen={modalIsOpen}
@@ -124,7 +123,7 @@ export const SingleCandidate = (props) => {
                                     <td className="col-1 text-center"><button className={report.companyName}
                                         onClick={() => {
                                             setModalIsOpen(true)
-                                            localStorage.setItem("modalNibble", report.companyName)
+                                            localStorage.setItem("modalNibble", report.id)
                                         }} ><i className="far fa-eye"></i></button></td>
                                 </tr>
 

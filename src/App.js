@@ -24,7 +24,6 @@ function App() {
     setLoggedIn(localStorage.getItem("userLoggedIn#10394e1"))
     getToken().then(tokenResponse => {
       localStorage.setItem("tokenNibble", tokenResponse);
-      token = localStorage.getItem("tokenNibble");
     })
   }, [])
 
