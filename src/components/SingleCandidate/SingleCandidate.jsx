@@ -9,6 +9,7 @@ import { getSingleCandidate } from "../../Services/getSingleCandidate";
 import { ModalComponent } from "../ModalComponent/ModalComponent";
 import avatar from "./assets/avatar.png"
 import "./SingleCandidate.css";
+import { projects } from "../Candidates/Candidates";
 
 
 
@@ -40,7 +41,7 @@ export const SingleCandidate = (props) => {
 
 
     useEffect(() => {
-        getSingleCandidate(props.match.params.id, props.token).then((candidate) => {
+        getSingleCandidate(props.match.params.id, props.token).then((candidate ) => {
             setCandidate(candidate)
             getReports(props.token).then(reports => {
                 const filtRep = reports.filter((report) => report.candidateId === candidate.id)
@@ -70,7 +71,7 @@ export const SingleCandidate = (props) => {
                        <div class="user-pic">
                             <figure>
                                 <img
-                                    src={avatar}
+                                    src={projects[3].photo}
                                     class="img-responsive"
                                     alt="candidateProfilePicture"
                                 ></img>

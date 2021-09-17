@@ -3,43 +3,29 @@ import { Link } from 'react-router-dom';
 import loadingImage from "./assets/loadingScreen.gif";
 import noUsersImage from "./assets/noUsersImage.jpg";
 import "./Candidates.css";
-import avatar0 from "./assets/avatar0.png";
-import avatar1 from "./assets/avatar1.png";
-import avatar2 from "./assets/avatar2.png";
-import avatar3 from "./assets/avatar3.png";
-import avatar4 from "./assets/avatar4.png";
-import avatar5 from "./assets/avatar5.png";
-import avatar6 from "./assets/avatar6.png";
+import avatar0 from "./assets/avatar0.jpg";
+import avatar1 from "./assets/avatar1.jpg";
+import avatar2 from "./assets/avatar2.jpg";
+import avatar3 from "./assets/avatar3.jpg";
+import avatar4 from "./assets/avatar4.jpg";
+import avatar5 from "./assets/avatar5.jpg";
+import avatar6 from "./assets/avatar6.jpg";
 
-const projects = [{
-    photo: avatar0,
-    text:"first project"
+export const projects = [
+{photo: avatar0,   
 },
-{
-    photo: avatar1,
-    text:"second project"
+{photo: avatar1,
 },
-{
-    photo: avatar2,
-    text:"third project"
+{photo: avatar2,
 },
-{
-    photo: avatar3,
-    text:"fourth project"
+{photo: avatar3,
 },
-{
-    photo: avatar4,
-    text:"fift project"
+{photo: avatar4,
 },
-{
-    photo: avatar5,
-    text:"six project"
+{ photo: avatar5,
 },
-{
-    photo: avatar6,
-    text:"seven project"
+{ photo: avatar6,
 }
-
 ]
 
 export const Candidates = ({ candidates }) => {
