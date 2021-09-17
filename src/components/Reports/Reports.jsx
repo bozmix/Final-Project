@@ -2,10 +2,13 @@ import "./Reports.css";
 import { getReports } from "../../Services/getReports";
 import { useEffect, useState } from "react/cjs/react.development";
 import { getDate } from "../../Services/getDate";
+import Modal from "react-modal";
+import { ModalComponent } from "../ModalComponent/ModalComponent";
 
 export const Reports = (props) => {
 
     const [reports, setReports] = useState([]);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     useEffect(() => {
         getReports(props.token).then(reports => {
@@ -14,10 +17,29 @@ export const Reports = (props) => {
     }, [props.token])
 
 
-
     return (
         <>
             < div className="reportsPageDiv bg-light mb-5 pb-5" >
+                <Modal
+                    autoFocus={true}
+                    centered={true}
+                    restoreFocus={true}
+                    shouldCloseOnOverlayClick={false}
+                    isOpen={modalIsOpen}
+                    style={{
+                        overlay: {
+                            backgroundColor: 'rgba(1, 1, 1, 0.75)',
+                            padding: "none",
+                        },
+                        content: {
+                            width: '50%',
+                            height: "fit-content",
+                            top: '30%',
+                            left: '25%',
+                        }
+                    }}>
+                    <ModalComponent reports={reports} setModalIsOpen={setModalIsOpen} />
+                </Modal>
                 {reports.map((report, index) => {
                     return (
                         <div className="singleCompanyCandidateReport bg-white p-1 ps-3 pe-3 ms-5 me-5" key={index}>
@@ -31,10 +53,15 @@ export const Reports = (props) => {
                             <div className="statusReport col-2"><div className="me-5 fw-bold">{report.status}</div><div className="me-5 text-black-50">Status</div></div>
 
                             <div className="col-1 text-center">
-                                <button className="me-5"><i className="far fa-eye "></i></button> <button className="me-2"><i className="fas fa-times"></i></button>
+                                <button className={report.companyName} onClick={() => {
+                                    setModalIsOpen(true)
+                                    localStorage.setItem("modalNibble", report.id)
+                                }} className="me-5"><i className="far fa-eye "></i></button> <button className="me-2"><i className="fas fa-times"></i></button>
                             </div>
 
                         </div>
+
+
                     )
                 })}
             </div >
