@@ -4,6 +4,7 @@ import { SelectCompany } from "./SelectCompany/SelectCompany";
 import { FillReportDetails } from "./FillReportDetails/FillReportDetails";
 import { Success } from "./Success/Success";
 import { useHistory } from "react-router";
+import { useState } from "react/cjs/react.development";
 
 
 
@@ -11,16 +12,19 @@ import { useHistory } from "react-router";
 
 export const CreateReport = (props) => {
 
+    const [selectedCandidate, setSelectedCandidate] = useState([]);
+    const [selectedCompany, setSelectedCompany] = useState([]);
+
     const step = +props.match.params.step;      //+ converts any string to number if possible
 
     const history = useHistory();
 
-
+    console.log(selectedCompany)
 
     const renderSwitch = () => {
         switch (step) {
-            case 1: return <SelectCandidate nextStep={nextStep} />;
-            case 2: return <SelectCompany nextStep={nextStep} stepBack={stepBack} />;
+            case 1: return <SelectCandidate nextStep={nextStep} selectedCandidate={selectedCandidate} setSelectedCandidate={setSelectedCandidate} />;
+            case 2: return <SelectCompany nextStep={nextStep} stepBack={stepBack} selectedCandidate={selectedCandidate} selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany} />;
             case 3: return <FillReportDetails nextStep={nextStep} stepBack={stepBack} />;
             case 4: return <Success stepBack={stepBack} />;
             default: <SelectCandidate />;
