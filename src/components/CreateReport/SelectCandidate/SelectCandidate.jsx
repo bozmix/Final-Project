@@ -6,10 +6,9 @@ import { useEffect, useState } from "react/cjs/react.development";
 import avatar from "../../Candidates/assets/avatar.png";
 import "./SelectCandidate.css";
 
-export const SelectCandidate = ({ nextStep }) => {
+export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandidate }) => {
 
     const [candidates, setCandidates] = useState([]);
-    const [selectedCandidate, setSelectedCandidate] = useState([]);
 
     let token = localStorage.getItem("tokenNibble");
 
@@ -17,6 +16,14 @@ export const SelectCandidate = ({ nextStep }) => {
         getCandidates(token)
             .then(candidates => setCandidates(candidates))
     }, [])
+
+    const validateSelectCandidate = () => {
+        if (selectedCandidate.length !== 0) {
+            nextStep()
+        } else {
+            alert("Please select candidate")
+        }
+    }
 
 
 
@@ -33,7 +40,7 @@ export const SelectCandidate = ({ nextStep }) => {
                 <div className="selectCandidates col-8">
                     {candidates.map((candidate, index) => {
                         return (
-                            <div className="oneCandidateToSelect bg-light d-inline-block col-5 p-1 m-3" id={candidate.id}
+                            <div className="oneCandidateToSelect bg-light d-inline-block col-5 p-1 m-3  user-select-all" id={candidate.id}
                                 onClick={() => setSelectedCandidate(candidate)} key={index}>
                                 <img className="smallAvatar col-3 mb-3" src={avatar} alt="" />
                                 <div className="d-inline-block m-3">
@@ -48,7 +55,7 @@ export const SelectCandidate = ({ nextStep }) => {
             </div>
             <div className="BackAndNextButtons position-relative">
 
-                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 end-0 me-5" onClick={nextStep}>NEXT</button>
+                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 end-0 me-5" onClick={validateSelectCandidate}>NEXT</button>
 
             </div>
         </>
