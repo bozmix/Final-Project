@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import loadingImage from "./assets/loadingScreen.gif";
-import noUsersImage from "./assets/noUsersImage.jpg";
+import { Link } from 'react-router-dom';
+import { LoadingPage } from "../LoadingPage/LoadingPage";
+import { useEffect } from "react/cjs/react.development";
+import { getCandidates } from "../../Services/getCandidates";
+import { NoUsers } from "../NoUsers/NoUsers";
+import { SearchBar } from "../SearchBar/SearchBar";
+
 import "./Candidates.css";
+
 import avatar0 from "./assets/avatar0.jpg";
 import avatar1 from "./assets/avatar1.jpg";
 import avatar2 from "./assets/avatar2.jpg";
@@ -21,80 +26,62 @@ export const projects = [
   { photo: avatar6 },
 ];
 
-export const Candidates = ({ candidates }) => {
-  const [filteredCandidates, setFilteredCandidates] = useState(candidates);
 
-  const filterCandidates = (event) => {
-    const filterCand = candidates.filter((candidate) => {
-      return candidate.name
-        .toLowerCase()
-        .includes(event.target.value.toLowerCase());
-    });
-    setFilteredCandidates(filterCand);
-  };
-  if (candidates.length < 1) {
-    return (
-      <div className="loadingImageDiv">
-        <img
-          className="loadingImage text-center"
-          src={loadingImage}
-          alt="Loading..."
-        />
-      </div>
-    );
-  } else if (filteredCandidates.length < 1) {
-    return (
-      <>
-        <div className="container-fluid mb-5">
-          <nav className="navbar navbar-light bg-light">
-            <span className="navbar-brand mb-0 h1 ms-5">Candidates</span>
-            <div className="form-inline me-5">
-              <input
-                className="form-control search text-center"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                onChange={filterCandidates}
-              ></input>
-            </div>
-          </nav>
-        </div>
-        <div className="noUsersDiv">
-          <img
-            className="noUsersImage text-center img-fluid mx-auto d-block"
-            src={noUsersImage}
-            alt="No users that match your search"
-          />
-          <p className="text-center fw-bold fs-3">
-            There are no users that match your search.
-          </p>
-        </div>
-      </>
-    );
-  } else {
-    return (
-      <main className="backround ">
-        <div className="d-flex search flex-row justify-content-between mx-5">
-          <span className="h3 mt-3 col-sm-12 col-md-6 mx-3">Candidates</span>
-          <div className="form-inline col-sm-2">
-            <input
-              className="form-control search mt-3 me-3"
-              type="search"
-              placeholder="...Search"
-              aria-label="Search"
-              onChange={filterCandidates}
-            ></input>
-          </div>
-        </div>
-        <hr></hr>
+export const Candidates = () => {
 
-        <div className="container-fluid ">
-          <div className="row justify-content-center ms-5 me-5">
-            {filteredCandidates.map((candidates2, index) => {
-              return (
-                <div className="col-md-6 col-lg-4 mb-5">
-                  <Link to={`/SingleCandidate/${candidates2.id}`} key={index}>
-                    <div className="mx-auto">
+    const [candidates, setCandidates] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredCandidates, setFilteredCandidates] = useState([]);
+
+    let token = localStorage.getItem("tokenNibble")
+
+
+    useEffect(() => {
+        getCandidates(token).then(candidates => {
+            setCandidates(candidates)
+            setFilteredCandidates(candidates)
+            setIsLoading(false);
+        })
+    }, [])
+
+    useEffect(() => {
+        const filtCandidates = candidates.filter(candidate => {
+            return candidate.name.toLowerCase().includes(searchQuery)
+        })
+        setFilteredCandidates(filtCandidates)
+    }, [searchQuery])
+
+
+    const filterCandidates = (event) => {
+        setSearchQuery(event.target.value.trim().toLowerCase())
+    }
+
+
+    if (isLoading) {
+        return (
+            <LoadingPage />
+        )
+    }
+
+    return !isLoading && filteredCandidates.length === 0
+        ? (
+            <>
+                <SearchBar setSearchTerm={setSearchQuery} filterCandidates={filterCandidates} />
+                <NoUsers />
+            </>
+        )
+        : (
+            <>
+                <SearchBar setSearchTerm={setSearchQuery} filterCandidates={filterCandidates} />
+
+                <div className="container-fluid ">
+                <div className="row justify-content-center ms-5 me-5">
+                    {filteredCandidates.map((candidates2, index) => {
+                        return (
+                          <div className="col-md-6 col-lg-4 mb-5">
+                            <Link to={`/single-candidate/${candidates2.id}`} key={index}>
+                                 <div className="mx-auto">
                       <div className="d-flex align-items-center justify-content-center">
                         <div className="text-center text-white"></div>
                       </div>
@@ -120,13 +107,14 @@ export const Candidates = ({ candidates }) => {
                         </h6>
                       </div>
                     </div>
-                  </Link>
+                            </Link>
+                            </div>
+                        )
+                        
+                    })}
+                    </div>
+                    
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </main>
-    );
-  }
-};
+            </>
+        )
+}

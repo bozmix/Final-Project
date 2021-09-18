@@ -1,6 +1,7 @@
 import "./Login.css";
 import "../../Services/getToken";
 import { useState } from 'react';
+import { getToken } from "../../Services/getToken";
 
 
 export const Login = ({ changeLogIn }) => {
@@ -20,9 +21,14 @@ export const Login = ({ changeLogIn }) => {
 
 
     const submitEmailAndPass = () => {
-        if (emailInputValue === "dev@dev.com" && passwordInputValue === "developer") {
-            localStorage.setItem("userLoggedIn#10394e1", true)
-            changeLogIn()
+        if (emailInputValue.includes('@') && passwordInputValue.length >= 6) {
+           
+            setWrongUsernameOrPassword(false);
+getToken(emailInputValue, passwordInputValue)
+                .then(token => {
+                    localStorage.setItem('tokenNibble', token);
+                    changeLogIn(true);
+                }).catch(err => console.log(err))
             setWrongUsernameOrPassword(false)
         } else {
             setWrongUsernameOrPassword(true)

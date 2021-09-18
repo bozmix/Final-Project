@@ -24,36 +24,38 @@ export const SingleCandidate = (props) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [singleReport, setSingleReport] = useState([]);
 
-    let singleCompany = localStorage.getItem("modalNibble");
+    let singleId = localStorage.getItem("modalNibble");
+
+    let token = localStorage.getItem("tokenNibble");
 
 
 
     useEffect(() => {
-        getCandidates(props.token).then(candidates => {
+        getCandidates(token).then(candidates => {
             setCandidates(candidates)
         })
-        getCompanies(props.token).then(companies => {
+        getCompanies(token).then(companies => {
             setCompanies(companies)
         })
-    }, [props.token])
+    }, [token])
 
 
 
 
     useEffect(() => {
-        getSingleCandidate(props.match.params.id, props.token).then((candidate ) => {
+        getSingleCandidate(props.match.params.id, token).then((candidate) => {
             setCandidate(candidate)
-            getReports(props.token).then(reports => {
+            getReports(token).then(reports => {
                 const filtRep = reports.filter((report) => report.candidateId === candidate.id)
                 setReports(filtRep)
             })
             reports.forEach((report) => {
-                if (report.companyName === singleCompany) {
+                if (report.companyName === singleId) {
                     setSingleReport(report)
                 }
             })
         })
-    }, [])
+    }, [token])
 
 
 

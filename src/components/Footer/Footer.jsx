@@ -34,9 +34,9 @@ export const Footer = () => {
 
 
     return (
-        <footer className="navbar text-dark fixed-bottom row bg-light">
+        <footer className="navbar fixed-bottom row ">
             <div className="container-fluid">
-                <div className="text-start p-1 mx-5">© 2021 Copyright BIT Students</div>
+                <div className="color text-start p-1 mx-5">© 2021 Copyright BIT Students</div>
 {/*                 <div className="text-end p-1 mx-5 ">Last update: {{timeSince(lastMod)}} ago</div> */}
             </div>
         </footer>
