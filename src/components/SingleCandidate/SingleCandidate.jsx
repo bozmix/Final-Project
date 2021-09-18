@@ -7,7 +7,7 @@ import { getReports } from "../../Services/getReports";
 import loadingImage from "./assets/loadingScreen.gif";
 import { getSingleCandidate } from "../../Services/getSingleCandidate";
 import { ModalComponent } from "../ModalComponent/ModalComponent";
-import avatar from "./assets/avatar.png"
+
 import "./SingleCandidate.css";
 import { projects } from "../Candidates/Candidates";
 
@@ -68,11 +68,11 @@ export const SingleCandidate = (props) => {
             <>
                 <div className="singleCandidateInfo row p-5">
                     <div className="profilePhoto col-sm-12 col-md-4">
-                       <div class="user-pic">
+                       <div className="user-pic">
                             <figure>
                                 <img
-                                    src={projects[3].photo}
-                                    class="img-responsive"
+                                    src={projects[2].photo}
+                                    className="img-responsive"
                                     alt="candidateProfilePicture"
                                 ></img>
                             </figure>
@@ -109,8 +109,6 @@ export const SingleCandidate = (props) => {
                             height: 'fit-content',
                             top: '30%',
                             left: '25%',
-                        
-                          
                         }
                     }}>
                     <ModalComponent reports={reports} setModalIsOpen={setModalIsOpen} />

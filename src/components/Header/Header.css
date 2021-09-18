@@ -1,23 +1,21 @@
 .interviewsReports {
     text-decoration: none;
-    color: black;
+    color: rgb(236, 199, 130);
 }
 .interviewsReports:hover  {
   color: #9ebddf;
 }
-
-header {
-   background-color: rgb(45, 46, 49);
-    
+.navbar {
+    background-color: rgb(218, 87, 87);
 }
-
 
 .btnLogOut:hover {
 	border: 1px solid #9ebddf;
     color:  #9ebddf;
 }
 .btnLogOut {
-    background-color: #fdfdfd;
+    background-color: rgb(236, 199, 130);
+    color: white;
     margin: 10px 0px;
     border-radius: 10px;
     border: 1px solid #eee;
@@ -30,7 +28,8 @@ header {
 }
 
 .btnCandidates {
-    background-color: #fdfdfd;
+    background-color: rgb(236, 199, 130);
+    color: white;
     margin: 10px 0px;
     border-radius: 10px;
     border: 1px solid #eee;

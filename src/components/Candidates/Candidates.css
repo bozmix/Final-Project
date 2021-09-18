@@ -1,5 +1,5 @@
 div {
-    color: black;
+    color: rgb(218, 87, 87);
 }
 
 img {
@@ -34,7 +34,7 @@ hr {
     transition: 0.5s;
 }
 main {
-    background-color: #ddd;
+    background-color: rgb(236, 199, 130);
     padding-top: 100px;
 }
 .card-box:hover .user-pic {
@@ -43,7 +43,7 @@ main {
 }
 .card-box {
     padding: 15px;
-    background-color: #fdfdfd;
+    background-color: #9ebddf;
     margin: 20px 0px;
     border-radius: 10px;
     border: 1px solid #eee;
@@ -57,8 +57,9 @@ main {
 input:hover::placeholder  {
     color: #9ebddf ;
 }
-input::placeholder  {
+.search::placeholder  {
    text-align: center ;
+   color: rgb(218, 87, 87);
 }
 
 
@@ -71,10 +72,12 @@ input::placeholder  {
     box-shadow: 0px 0px 8px 0px #d4d4d4;
     transition: 0.5s;
     
+    
 }
 
 .search input {
-    margin-right: 100px;
+    margin-right: 100px; 
+    color: rgb(218, 87, 87);
 }
 .search:hover {
 	border: 1px solid #9ebddf;
