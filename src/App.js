@@ -7,6 +7,7 @@ import { SingleCandidate } from './components/SingleCandidate/SingleCandidate';
 import { Candidates } from './components/Candidates/Candidates';
 import { Footer } from './components/Footer/Footer';
 import { Reports } from './components/Reports/Reports';
+import { CreateReport } from './components/CreateReport/CreateReport';
 import './App.css';
 
 Modal.setAppElement("#root")
@@ -26,6 +27,7 @@ function App() {
               <Route path='/home' component={Candidates} />
               <Route path='/single-candidate/:id' component={SingleCandidate} />
               <Route path='/reports' component={Reports} />
+              <Route path='/create/:step' component={CreateReport} />
               <Redirect from='/' to='/home' />
             </Switch>
           </>

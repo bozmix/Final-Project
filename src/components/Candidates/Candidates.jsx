@@ -34,7 +34,7 @@ export const Candidates = () => {
     }, [searchQuery])
 
 
-    const filterCandidates = (event) => {
+    const filterFunction = (event) => {
         setSearchQuery(event.target.value.trim().toLowerCase())
     }
 
@@ -48,13 +48,13 @@ export const Candidates = () => {
     return !isLoading && filteredCandidates.length === 0
         ? (
             <>
-                <SearchBar setSearchTerm={setSearchQuery} filterCandidates={filterCandidates} />
+                <SearchBar filterFunction={filterFunction} />
                 <NoUsers />
             </>
         )
         : (
             <>
-                <SearchBar setSearchTerm={setSearchQuery} filterCandidates={filterCandidates} />
+                <SearchBar setSearchTerm={setSearchQuery} filterFunction={filterFunction} />
 
                 <div className='candidates ps-xs-1 pe-xs-1 ps-sm-5 pe-sm-5 ps-md-5 pe-md-5 ps-xl-5 pe-xl-5 ms-5 mx-xs-auto mx-sm-auto mx-md-auto mx-lg-auto'>
                     {filteredCandidates.map((candidates2, index) => {

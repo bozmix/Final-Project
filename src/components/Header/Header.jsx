@@ -11,7 +11,7 @@ export const Header = ({ changeLogIn }) => {
 
 
     return (
-        <header className="p-5">
+        <header className="p-5 bg-info">
             <nav className="navbar bg-info fixed-top">
 
                 <Link className="interviewsReports col-lg-6" to="/home">
