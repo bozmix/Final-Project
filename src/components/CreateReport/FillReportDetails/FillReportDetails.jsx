@@ -1,5 +1,4 @@
 import "./FillReportDetails.css";
-import { Link } from "react-router-dom";
 import numberOne from "../assets/numberOneInCircle.png";
 import numberTwo from "../assets/numberTwoInCircle.png";
 import numberThree from "../assets/numberThreeInCircle.png";

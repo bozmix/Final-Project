@@ -1,3 +1,9 @@
 .numberOne, .numberTwo, .numberThree {
     width: 50px;
 }
+
+.smallAvatar {
+    width: 25%;
+    border-radius: 50%;
+    height: 100%;
+}

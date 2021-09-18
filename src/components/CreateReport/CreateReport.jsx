@@ -3,8 +3,8 @@ import { SelectCandidate } from "./SelectCandidate/SelectCandidate";
 import { SelectCompany } from "./SelectCompany/SelectCompany";
 import { FillReportDetails } from "./FillReportDetails/FillReportDetails";
 import { Success } from "./Success/Success";
-import { Switch, Route, useHistory } from "react-router";
-import { useState } from "react/cjs/react.development";
+import { useHistory } from "react-router";
+
 
 
 
@@ -14,6 +14,7 @@ export const CreateReport = (props) => {
     const step = +props.match.params.step;      //+ converts any string to number if possible
 
     const history = useHistory();
+
 
 
     const renderSwitch = () => {
@@ -39,8 +40,8 @@ export const CreateReport = (props) => {
 
     return (
         <>
-            <nav class="navbar navbar-light bg-light">
-                <form class="container-fluid justify-content-start">
+            <nav className="navbar navbar-light bg-light">
+                <form className="container-fluid justify-content-start">
                     <div className="col-10 h1">Reports Administration </div>
                     <div className="buttonsDiv col-2">
                         <button className="btn btn-secondary text-white btn-outline-success me-2" type="button">Create New Report</button>
