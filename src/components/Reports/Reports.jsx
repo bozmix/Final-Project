@@ -10,11 +10,15 @@ export const Reports = (props) => {
     const [reports, setReports] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
+    let token = localStorage.getItem("tokenNibble")
+
     useEffect(() => {
-        getReports(props.token).then(reports => {
+        getReports(token).then(reports => {
             setReports(reports.slice(0, 24))
         })
-    }, [props.token, reports])
+        console.log(token)
+        console.log(reports)
+    }, [token])
 
 
     const deleteRequest = (token) => {
@@ -29,7 +33,7 @@ export const Reports = (props) => {
     }
 
     const createNewReport = () => {
-        
+
     }
 
 
@@ -56,33 +60,47 @@ export const Reports = (props) => {
                     }}>
                     <ModalComponent reports={reports} setModalIsOpen={setModalIsOpen} />
                 </Modal>
+
                 <div className="text-end m-3 me-5">
                     <button onClick={createNewReport} className="btn btn-info text-center">Create New Report</button>
                 </div>
+
                 {reports.map((report, index) => {
                     return (
-                        <div className="singleCompanyCandidateReport bg-info p-1 ps-3 pe-3 ms-5 me-5 m-2" key={index}>
+                        <div className="singleCompanyCandidateReport bg-info p-1 ps-3 pe-3 ms-5 me-5 m-2 row" key={index}>
 
-                            <div className="companyNameReport col-3"><div className="me-5 col fw-bold">{report.companyName}</div><div className="me-5 text-black-50">Company</div></div>
+                            <div className="companyNameReport col-xs-6 col-lg-3">
+                                <div className="me-5 fw-bold">{report.companyName}</div>
+                                <div className="me-5 text-black-50">Company</div>
+                            </div>
 
-                            <div className="candidateNameReport col-4"><div className="me-5 fw-bold">{report.candidateName}</div><div className="me-5 text-black-50">Candidate</div></div>
+                            <div className="candidateNameReport col-xs-6 col-lg-4">
+                                <div className="me-5 fw-bold">{report.candidateName}</div>
+                                <div className="me-5 text-black-50">Candidate</div>
+                            </div>
 
-                            <div className="interviewDateReport col-2"><div className="me-5 fw-bold">{getDate(report.interviewDate)}</div><div className="me-5 text-black-50">Interview Date</div></div>
+                            <div className="interviewDateReport col-xs-6 col-lg-2">
+                                <div className="me-5 fw-bold">{getDate(report.interviewDate)}</div>
+                                <div className="me-5 text-black-50">Interview Date</div>
+                            </div>
 
-                            <div className="statusReport col-2"><div className="me-5 fw-bold">{report.status}</div><div className="me-5 text-black-50">Status</div></div>
+                            <div className="statusReport col-xs-6 col-lg-2">
+                                <div className="me-5 fw-bold">{report.status}</div>
+                                <div className="me-5 text-black-50">Status</div>
+                            </div>
 
-                            <div className="col-1 text-center">
-                                <button className={report.companyName} onClick={() => {
+                            <div className="col-xs-6 col-lg-1 text-md-center text-lg-center">
+                                <button onClick={() => {
                                     setModalIsOpen(true)
                                     localStorage.setItem("modalNibble", report.id)
-                                }} className="me-5"><i className="far fa-eye "></i></button> <button onClick={() => {
+                                }} className="me-5"><i className="far fa-eye "></i></button>
+
+                                <button onClick={() => {
                                     localStorage.setItem("modalNibble", report.id)
                                     deleteRequest(props.token)
                                 }} className="me-2"><i className="fas fa-times"></i></button>
                             </div>
-
                         </div>
-
                     )
                 })}
             </div >

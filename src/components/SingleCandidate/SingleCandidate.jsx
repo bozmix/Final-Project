@@ -25,24 +25,24 @@ export const SingleCandidate = (props) => {
 
     let singleId = localStorage.getItem("modalNibble");
 
-
+    let token = localStorage.getItem("tokenNibble");
 
     useEffect(() => {
-        getCandidates(props.token).then(candidates => {
+        getCandidates(token).then(candidates => {
             setCandidates(candidates)
         })
-        getCompanies(props.token).then(companies => {
+        getCompanies(token).then(companies => {
             setCompanies(companies)
         })
-    }, [props.token])
+    }, [token])
 
 
 
 
     useEffect(() => {
-        getSingleCandidate(props.match.params.id, props.token).then((candidate) => {
+        getSingleCandidate(props.match.params.id, token).then((candidate) => {
             setCandidate(candidate)
-            getReports(props.token).then(reports => {
+            getReports(token).then(reports => {
                 const filtRep = reports.filter((report) => report.candidateId === candidate.id)
                 setReports(filtRep)
             })
@@ -52,7 +52,7 @@ export const SingleCandidate = (props) => {
                 }
             })
         })
-    }, [props.token])
+    }, [token])
 
 
 
@@ -105,7 +105,7 @@ export const SingleCandidate = (props) => {
                 </Modal>
 
 
-                <div className="singleCandidateReports m-5">
+                <div className="singleCandidateReports">
                     <table className="table table-striped table-hover">
                         <tbody>
                             <tr>
