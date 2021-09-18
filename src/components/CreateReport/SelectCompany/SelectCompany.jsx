@@ -6,7 +6,7 @@ import { getCompanies } from "../../../Services/getCompanies";
 import { useEffect, useState } from "react/cjs/react.development";
 
 
-export const SelectCompany = ({ stepBack, nextStep }) => {
+export const SelectCompany = ({ stepBack, nextStep, selectedCandidate, selectedCompany, setSelectedCompany }) => {
 
     const [companies, setCompanies] = useState([]);
 
@@ -18,7 +18,16 @@ export const SelectCompany = ({ stepBack, nextStep }) => {
             .then(data => setCompanies(data))
 
     }, [token])
-    
+
+
+    const validateSelectedCompany = () => {
+        if (selectedCompany.length !== 0) {
+            nextStep()
+        } else {
+            alert("Please select company")
+        }
+    }
+
 
 
     return (
@@ -31,18 +40,18 @@ export const SelectCompany = ({ stepBack, nextStep }) => {
                         <p className="fs-3"><img className="numberThree m-3" src={numberThree} alt="" /> Fill Report Details</p>
                     </div>
                     <hr />
-                    <p className="ms-5">Candidate:</p>
-                    <p>{selectedCandidate.name}</p>
+                    <p className="ms-5 fs-3">Candidate:</p>
+                    <p className="ms-5 fw-bold fs-1">{selectedCandidate.name}</p>
                 </div>
                 <div className="companies col-7 bg-light p-5">
                     {companies.map((company, index) => (
-                        <p className="bg-info p-1 ps-3 rounded" key={index}>{company.name}</p>
+                        <p onClick={() => { setSelectedCompany(company.name) }} className="bg-info p-1 ps-3 rounded user-select-all" key={index}>{company.name}</p>
                     ))}
                 </div>
             </div>
             <div className="BackAndNextButtons position-relative">
                 <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 start-50" onClick={stepBack}>BACK</button>
-                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 end-0 me-5" onClick={nextStep}>NEXT</button>
+                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 end-0 me-5" onClick={validateSelectedCompany}>NEXT</button>
             </div>
 
         </>
