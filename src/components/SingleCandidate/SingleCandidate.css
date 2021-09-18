@@ -27,3 +27,7 @@ td {
 .loadingImage {
     height: 100vh;
 }
+
+.singleCandidateReports {
+    margin-bottom: 100px;
+}

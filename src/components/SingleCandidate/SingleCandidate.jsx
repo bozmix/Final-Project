@@ -4,10 +4,10 @@ import { getCandidates } from "../../Services/getCandidates";
 import { getCompanies } from "../../Services/getCompanies";
 import { getDate } from "../../Services/getDate";
 import { getReports } from "../../Services/getReports";
-import imagePlaceholder from "./assets/placeholderImage.png";
 import loadingImage from "./assets/loadingScreen.gif";
 import { getSingleCandidate } from "../../Services/getSingleCandidate";
 import { ModalComponent } from "../ModalComponent/ModalComponent";
+import avatar from "./assets/avatar.png";
 import "./SingleCandidate.css";
 
 
@@ -23,36 +23,36 @@ export const SingleCandidate = (props) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [singleReport, setSingleReport] = useState([]);
 
-    let singleCompany = localStorage.getItem("modalNibble");
+    let singleId = localStorage.getItem("modalNibble");
 
-
+    let token = localStorage.getItem("tokenNibble");
 
     useEffect(() => {
-        getCandidates(props.token).then(candidates => {
+        getCandidates(token).then(candidates => {
             setCandidates(candidates)
         })
-        getCompanies(props.token).then(companies => {
+        getCompanies(token).then(companies => {
             setCompanies(companies)
         })
-    }, [props.token])
+    }, [token])
 
 
 
 
     useEffect(() => {
-        getSingleCandidate(props.match.params.id, props.token).then((candidate) => {
+        getSingleCandidate(props.match.params.id, token).then((candidate) => {
             setCandidate(candidate)
-            getReports(props.token).then(reports => {
+            getReports(token).then(reports => {
                 const filtRep = reports.filter((report) => report.candidateId === candidate.id)
                 setReports(filtRep)
             })
             reports.forEach((report) => {
-                if (report.companyName === singleCompany) {
+                if (report.companyName === singleId) {
                     setSingleReport(report)
                 }
             })
         })
-    }, [])
+    }, [token])
 
 
 
@@ -66,16 +66,16 @@ export const SingleCandidate = (props) => {
         return (
             <>
                 <div className="singleCandidateInfo row p-5">
-                    <div className="profilePhoto col-4">
-                        <img className="imagePlaceholder" src={imagePlaceholder} alt="candidateProfilePicture"></img>
+                    <div className="profilePhoto col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                        <img className="imagePlaceholder" src={avatar} alt="candidateProfilePicture"></img>
                     </div>
-                    <div className="nameEmail col-4 p-5">
+                    <div className="nameEmail col-xs-12 col-sm-12 col-md-6 col-lg-4 p-5">
                         <p className="fw-bold">Name:</p>
                         <p className="ms-3">{candidate.name}</p>
                         <p className="fw-bold">Email:</p>
                         <p className="ms-3">{candidate.email}</p>
                     </div>
-                    <div className="birthEducation col-4 p-5">
+                    <div className="birthEducation col-xs-12 col-sm-12 col-md-6 col-lg-4 p-5">
                         <p className="fw-bold">Date of birth:</p>
                         <p className="ms-3">{getDate(candidate.birthday)}</p>
                         <p className="fw-bold">Education:</p>
@@ -86,7 +86,6 @@ export const SingleCandidate = (props) => {
                 <Modal
                     autoFocus={true}
                     centered={true}
-                    keyboard={true}
                     restoreFocus={true}
                     shouldCloseOnOverlayClick={false}
                     isOpen={modalIsOpen}
@@ -106,7 +105,7 @@ export const SingleCandidate = (props) => {
                 </Modal>
 
 
-                <div className="singleCandidateReports m-5">
+                <div className="singleCandidateReports">
                     <table className="table table-striped table-hover">
                         <tbody>
                             <tr>
@@ -124,7 +123,7 @@ export const SingleCandidate = (props) => {
                                     <td className="col-1 text-center"><button className={report.companyName}
                                         onClick={() => {
                                             setModalIsOpen(true)
-                                            localStorage.setItem("modalNibble", report.companyName)
+                                            localStorage.setItem("modalNibble", report.id)
                                         }} ><i className="far fa-eye"></i></button></td>
                                 </tr>
 

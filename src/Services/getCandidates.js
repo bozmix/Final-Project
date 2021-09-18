@@ -7,6 +7,6 @@ export const getCandidates = (token) => {
     })
         .then((data) => data.json())
         .then((info) => {
-            return info.slice(0,7);
+            return info.slice(0, 7);
         });
 };
