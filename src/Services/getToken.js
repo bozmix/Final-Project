@@ -1,9 +1,9 @@
-export const getToken = () => {
+export const getToken = (email, password) => {
     return fetch("http://localhost:3333/login", {
         method: "POST",
         body: JSON.stringify({
-            email: "dev@dev.com",
-            password: "developer"
+            email,
+            password
         }),
         headers: {
             "Content-Type": "application/json",
@@ -14,7 +14,3 @@ export const getToken = () => {
             return info.accessToken
         })
 }
-
-
-
-/* .then(localStorage.setItem("ourAccessToken#nibble", accessToken)) */

@@ -34,7 +34,7 @@ export const Footer = () => {
 
 
     return (
-        <footer className="navbar text-dark fixed-bottom row border border-dark footer">
+        <footer className="navbar bg-info text-dark fixed-bottom row border border-dark footer mt-5">
             <div className="container-fluid">
                 <div className="text-start p-1 mx-5">© 2021 Copyright BIT Students</div>
 {/*                 <div className="text-end p-1 mx-5 ">Last update: {{timeSince(lastMod)}} ago</div> */}

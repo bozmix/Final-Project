@@ -34,3 +34,7 @@ img {
 .noUsersDiv img {
     width: 20%;
 }
+
+.noUsersDiv {
+    margin-top: 15%;
+}

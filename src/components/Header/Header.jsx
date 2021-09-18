@@ -5,14 +5,14 @@ import "./Header.css";
 export const Header = ({ changeLogIn }) => {
 
     const logOut = () => {
-        localStorage.removeItem("userLoggedIn#10394e1")
-        changeLogIn()
+        localStorage.removeItem("tokenNibble")
+        changeLogIn(false);
     }
 
 
     return (
-        <header className="p-5">
-            <nav className="navbar bg-light fixed-top">
+        <header className="p-5 bg-info">
+            <nav className="navbar bg-info fixed-top">
 
                 <Link className="interviewsReports col-lg-6" to="/home">
                     <h1 className="text-dark ms-5 me-5">
