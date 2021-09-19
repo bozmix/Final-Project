@@ -12,3 +12,12 @@
     text-decoration: none;
     color: black;
 }
+
+.selectCandidates .oneCandidateToSelect:hover, .selectCandidates .oneCandidateToSelect:focus, .selectCandidates .oneCandidateToSelect:active {
+    border: 1px solid skyblue;
+    border-radius: 20px;
+}
+
+.selectCandidates .oneCandidateToSelect:hover {
+    cursor: pointer;
+}

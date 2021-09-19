@@ -71,7 +71,7 @@ export const FillReportDetails = ({ stepBack, nextStep, selectedCandidate, selec
     return (
         <>
             <div className="row">
-                <div className="steps border-end border-dark col-4">
+                <div className="steps border-end border-dark col-xs-12 col-sm-12 col-md-4">
                     <div className="m-5">
                         <Link className="selectWizardLinks" to="/create/1">
                             <p className="fs-3"><img className="numberOne m-3" src={numberOne} alt="" /> Select Candidate</p>
@@ -90,7 +90,7 @@ export const FillReportDetails = ({ stepBack, nextStep, selectedCandidate, selec
                     <p className="ms-5 fw-bold fs-1">{selectedCompany.name}</p>
                 </div>
 
-                <div className="reportDetails col-7">
+                <div className="reportDetails ms-4 ps-xs-5 ps-sm-4  ms-xs-5 ms-sm-4 col-7">
                     <div className="col-12 m-3">
 
                         <p>Interview Date:</p>
@@ -110,7 +110,7 @@ export const FillReportDetails = ({ stepBack, nextStep, selectedCandidate, selec
                     <div className="notesReportDetails ms-4">
                         <p>Notes</p>
                         <div className="input-group mb-3">
-                            <textarea name="" id="notesTextarea" cols="120" rows="10" onChange={(event) => setNotes(event.target.value)}></textarea>
+                            <textarea name="" id="notesTextarea" cols="150" rows="10" onChange={(event) => setNotes(event.target.value)}></textarea>
                         </div>
                     </div>
                 </div>

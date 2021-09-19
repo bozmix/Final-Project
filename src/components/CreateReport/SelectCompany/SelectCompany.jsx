@@ -33,23 +33,28 @@ export const SelectCompany = ({ stepBack, nextStep, selectedCandidate, selectedC
     return (
         <>
             <div className="row">
-                <div className="steps border-end border-dark col-4">
+                <div className="steps border-end border-dark col-xs-12 col-sm-12 col-md-4">
                     <div className="m-5">
                         <Link className="selectWizardLinks" to="/create/1">
                             <p className="fs-3"><img className="numberOne m-3" src={numberOne} alt="" /> Select Candidate</p>
                         </Link>
 
-                        <Link className="selectWizardLinks"  to="/create/2">
+                        <Link className="selectWizardLinks" to="/create/2">
                             <p className="fw-bold fs-3"><img className="numberTwo m-3" src={numberTwo} alt="" /> Select Company</p>
                         </Link>
-
-                        <Link className="selectWizardLinks"  to="/create/3">
+                        {(selectedCompany.length !== 0) ?
+                            <Link className="selectWizardLinks" to="/create/3">
+                                <p className="fs-3"><img className="numberThree m-3" src={numberThree} alt="" /> Fill Report Details</p>
+                            </Link>
+                            :
                             <p className="fs-3"><img className="numberThree m-3" src={numberThree} alt="" /> Fill Report Details</p>
-                        </Link>
+                        }
                     </div>
                     <hr />
                     <p className="ms-5 fs-3">Candidate:</p>
                     <p className="ms-5 fw-bold fs-1">{selectedCandidate.name}</p>
+                    <p className="ms-5 fs-3">Company:</p>
+                    <p className="ms-5 fw-bold fs-1">{selectedCompany.name}</p>
                 </div>
                 <div className="companies col-7 bg-light p-5">
                     {companies.map((company, index) => (

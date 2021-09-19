@@ -6,7 +6,7 @@ import { Success } from "./Success/Success";
 import { useHistory } from "react-router";
 import { useState } from "react/cjs/react.development";
 import { Link } from "react-router-dom";
-
+import { Reports } from "../Reports/Reports";
 
 
 
@@ -16,7 +16,6 @@ export const CreateReport = (props) => {
 
     const [selectedCandidate, setSelectedCandidate] = useState([]);
     const [selectedCompany, setSelectedCompany] = useState([]);
-
     const [interviewDate, setinterviewDate] = useState("");
     const [phase, setPhase] = useState("");
     const [status, setStatus] = useState("");
@@ -29,7 +28,6 @@ export const CreateReport = (props) => {
     const history = useHistory();
 
     let dataToBeSent = {
-
         candidateId: selectedCandidate.id,
         candidateName: selectedCandidate.name,
         companyId: selectedCompany.id,
@@ -40,32 +38,24 @@ export const CreateReport = (props) => {
         note: notes
     }
 
-    console.log(dataToBeSent)
 
     const sendCreateNewReportRequest = () => {
-        return fetch("http://localhost:3333/candidates", {
+        return fetch("http://localhost:3333/reports", {
             method: "POST",
-            data: {
-                candidateId: selectedCandidate.id,
-                candidateName: selectedCandidate.name,
-                companyId: selectedCompany.id,
-                companyName: selectedCompany.name,
-                interviewDate: interviewDate,
-                phase: phase,
-                status: status,
-                note: notes
-            },
             headers: {
                 Authorization: `Bearer ${token}`,
             },
+            body: JSON.stringify(dataToBeSent),
         })
             .then(res => console.log(res))
     };
 
-    if (submit === true) {
+
+    if (submit) {
         sendCreateNewReportRequest()
         setSubmit(false)
     }
+
 
     const renderSwitch = () => {
         switch (step) {
@@ -102,13 +92,6 @@ export const CreateReport = (props) => {
             </nav>
 
             {renderSwitch()}
-
-            {/* <Switch>
-                <Route path='/create/1' component={SelectCandidate} />
-                <Route path='/create/2' component={SelectCompany} />
-                <Route path='/create/3' component={FillReportDetails} />
-                <Route path='/create/success' component={Success} />
-            </Switch> */}
         </>
     )
 }
