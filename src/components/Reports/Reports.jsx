@@ -17,6 +17,7 @@ export const Reports = () => {
     const [filteredReports, setFilteredReports] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    console.log(reports)
 
     let token = localStorage.getItem("tokenNibble")
 

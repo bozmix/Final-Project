@@ -4,6 +4,7 @@ import numberThree from "../assets/numberThreeInCircle.png";
 import { getCandidates } from "../../../Services/getCandidates";
 import { useEffect, useState } from "react/cjs/react.development";
 import avatar from "../../Candidates/assets/avatar.png";
+import { Link } from "react-router-dom";
 import "./SelectCandidate.css";
 
 export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandidate }) => {
@@ -32,9 +33,15 @@ export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandid
             <div className="row">
                 <div className="steps border-end border-dark col-4">
                     <div className="m-5">
-                        <p className="fw-bold fs-3"><img className="numberOne m-3" src={numberOne} alt="" /> Select Candidate</p>
-                        <p className="fs-3"><img className="numberTwo m-3" src={numberTwo} alt="" /> Select Company</p>
-                        <p className="fs-3"><img className="numberThree m-3" src={numberThree} alt="" /> Fill Report Details</p>
+                        <Link className="selectWizardLinks" to="/create/1">
+                            <p className="fw-bold fs-3"><img className="numberOne m-3" src={numberOne} alt="" /> Select Candidate</p>
+                        </Link>
+                        <Link className="selectWizardLinks" to="/create/2">
+                            <p className="fs-3"><img className="numberTwo m-3" src={numberTwo} alt="" /> Select Company</p>
+                        </Link>
+                        <Link className="selectWizardLinks" to="/create/3">
+                            <p className="fs-3"><img className="numberThree m-3" src={numberThree} alt="" /> Fill Report Details</p>
+                        </Link>
                     </div>
                 </div>
                 <div className="selectCandidates col-8">

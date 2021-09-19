@@ -7,3 +7,8 @@
     border-radius: 50%;
     height: 100%;
 }
+
+.selectWizardLinks {
+    text-decoration: none;
+    color: black;
+}

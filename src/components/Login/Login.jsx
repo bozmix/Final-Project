@@ -22,18 +22,22 @@ export const Login = ({ changeLogIn }) => {
 
     const submitEmailAndPass = () => {
         if (emailInputValue.includes('@') && passwordInputValue.length >= 6) {
-/*             localStorage.setItem("userLoggedIn#10394e1", true)
-
- */            
             setWrongUsernameOrPassword(false);
-getToken(emailInputValue, passwordInputValue)
+
+            getToken(emailInputValue, passwordInputValue)
                 .then(token => {
-                    localStorage.setItem('tokenNibble', token);
-                    changeLogIn(true);
-                }).catch(err => console.log(err))
-            setWrongUsernameOrPassword(false)
+                    if (token === undefined) {
+                        setWrongUsernameOrPassword(true)
+                    } else {
+                        localStorage.setItem('tokenNibble', token);
+                        changeLogIn(true);
+                    }
+                }).catch(err => {
+                    console.log(err)
+                    setWrongUsernameOrPassword(true);
+                })
         } else {
-            setWrongUsernameOrPassword(true)
+            setWrongUsernameOrPassword(true);
         }
     }
 

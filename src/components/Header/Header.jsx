@@ -12,7 +12,7 @@ export const Header = ({ changeLogIn }) => {
 
     return (
         <header className="p-5 bg-info">
-            <nav className="navbar bg-info fixed-top">
+            <nav className="navbar bg-info navbar-expand-sm fixed-top">
 
                 <Link className="interviewsReports col-lg-6" to="/home">
                     <h1 className="text-dark ms-5 me-5">
