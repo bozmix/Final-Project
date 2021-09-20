@@ -6,3 +6,11 @@
     text-decoration: none;
     color: black;
 }
+
+.backButtonFillReports {
+    left: 37%;
+}
+
+.nextButtonFillReports {
+    right: 5%;
+}

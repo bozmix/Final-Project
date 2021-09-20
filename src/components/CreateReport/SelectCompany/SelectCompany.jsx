@@ -1,23 +1,44 @@
-import "./SelectCompany.css";
+import { useEffect, useState } from "react/cjs/react.development";
+import { Link } from "react-router-dom";
 import numberOne from "../assets/numberOneInCircle.png";
 import numberTwo from "../assets/numberTwoInCircle.png";
 import numberThree from "../assets/numberThreeInCircle.png";
 import { getCompanies } from "../../../Services/getCompanies";
-import { useEffect, useState } from "react/cjs/react.development";
-import { Link } from "react-router-dom";
+import { SearchBar } from "../../SearchBar/SearchBar";
+import "./SelectCompany.css";
 
 export const SelectCompany = ({ stepBack, nextStep, selectedCandidate, selectedCompany, setSelectedCompany }) => {
 
     const [companies, setCompanies] = useState([]);
-
+    const [filteredCompanies, setFilteredCompanies] = useState([]);
+    const [searchQuery, setSearchQuery] = useState([]);
+    console.log(companies)
+    console.log(filteredCompanies)
 
     let token = localStorage.getItem("tokenNibble");
 
     useEffect(() => {
         getCompanies(token)
-            .then(data => setCompanies(data))
+            .then(data => {
+                setCompanies(data)
+                setFilteredCompanies(data)
+            })
 
     }, [token])
+
+
+    const filterFunction = (event) => {
+        setSearchQuery(event.target.value.trim().toLowerCase())
+    }
+
+
+    useEffect(() => {
+        const filtCompanies = companies.filter(company => {
+            console.log(company.name)
+            return company.name.toLowerCase().includes(searchQuery)
+        })
+        setFilteredCompanies(filtCompanies)
+    }, [searchQuery])
 
 
     const validateSelectedCompany = () => {
@@ -57,14 +78,18 @@ export const SelectCompany = ({ stepBack, nextStep, selectedCandidate, selectedC
                     <p className="ms-5 fw-bold fs-1">{selectedCompany.name}</p>
                 </div>
                 <div className="companies col-7 bg-light p-5">
-                    {companies.map((company, index) => (
+                    <div className="searchBarCompanies">
+                        <SearchBar passedHeadline={"Search companies"} filterFunction={filterFunction} />
+                    </div>
+
+                    {filteredCompanies.map((company, index) => (
                         <p onClick={() => { setSelectedCompany(company) }} className="bg-info p-1 ps-3 rounded user-select-all" key={index}>{company.name}</p>
                     ))}
                 </div>
             </div>
-            <div className="BackAndNextButtons position-relative">
-                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 start-50" onClick={stepBack}>BACK</button>
-                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 end-0 me-5" onClick={validateSelectedCompany}>NEXT</button>
+            <div className="BackAndNextButtons position-relative me-5">
+                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 backButtonCompany" onClick={stepBack}>BACK</button>
+                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 me-5 nextButtonCompany" onClick={validateSelectedCompany}>NEXT</button>
             </div>
 
         </>

@@ -1,23 +1,41 @@
+import { getCandidates } from "../../../Services/getCandidates";
+import { useEffect, useState } from "react/cjs/react.development";
+import { Link } from "react-router-dom";
 import numberOne from "../assets/numberOneInCircle.png";
 import numberTwo from "../assets/numberTwoInCircle.png";
 import numberThree from "../assets/numberThreeInCircle.png";
-import { getCandidates } from "../../../Services/getCandidates";
-import { useEffect, useState } from "react/cjs/react.development";
 import avatar from "../../Candidates/assets/avatar.png";
-import { Link } from "react-router-dom";
+import { SearchBar } from "../../SearchBar/SearchBar";
 import "./SelectCandidate.css";
 
 export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandidate }) => {
 
     const [candidates, setCandidates] = useState([]);
+    const [filteredCandidates, setFilteredCandidates] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
 
     let token = localStorage.getItem("tokenNibble");
 
 
     useEffect(() => {
         getCandidates(token)
-            .then(candidates => setCandidates(candidates))
+            .then(candidates => {
+                setCandidates(candidates)
+                setFilteredCandidates(candidates)
+            })
     }, [])
+
+    useEffect(() => {
+        const filtCandidates = candidates.filter(candidate => {
+            return candidate.name.toLowerCase().includes(searchQuery)
+        })
+        setFilteredCandidates(filtCandidates)
+    }, [searchQuery])
+
+
+    const filterFunction = (event) => {
+        setSearchQuery(event.target.value.trim().toLowerCase())
+    }
 
 
     const validateSelectCandidate = () => {
@@ -62,8 +80,14 @@ export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandid
                         <p className="ms-5 fw-bold fs-1">{selectedCandidate.name}</p>
                     </div>
                 </div>
+
+
                 <div className="selectCandidates col-8">
-                    {candidates.map((candidate, index) => {
+                    <div className="searchBarCandidates pt-3 ps-3 pe-5">
+                        <SearchBar filterFunction={filterFunction} />
+                    </div>
+
+                    {filteredCandidates.map((candidate, index) => {
                         return (
                             <div className="oneCandidateToSelect bg-light d-inline-block col-5 p-1 m-3 me-1" id={candidate.id}
                                 onClick={() => setSelectedCandidate(candidate)} key={index}>

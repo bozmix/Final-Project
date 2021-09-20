@@ -32,7 +32,10 @@ function App() {
             </Switch>
           </>
           :
+          <>
           <Login changeLogIn={setLoggedIn} />
+          <Redirect from='/' to='/login' />
+          </>
       }
       <Footer />
     </div>

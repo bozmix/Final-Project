@@ -116,8 +116,8 @@ export const FillReportDetails = ({ stepBack, nextStep, selectedCandidate, selec
                 </div>
             </div>
             <div className="BackAndNextButtons position-relative">
-                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-10 start-50" onClick={stepBack}>BACK</button>
-                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-10 end-0 me-5" onClick={sendSubmit}>SUBMIT</button>
+                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 backButtonFillReports" onClick={stepBack}>BACK</button>
+                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 me-5 nextButtonFillReports" onClick={sendSubmit}>SUBMIT</button>
             </div>
         </>
     )
