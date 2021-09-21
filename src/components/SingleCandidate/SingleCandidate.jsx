@@ -65,7 +65,7 @@ export const SingleCandidate = (props) => {
     } else {
         return (
             <>
-                <div className="singleCandidateInfo row p-5">
+                <div className="singleCandidateInfo mt-5 row p-5">
                     <div className="profilePhoto col-xs-12 col-sm-12 col-md-6 col-lg-4">
                         <img className="imagePlaceholder" src={avatar} alt="candidateProfilePicture"></img>
                     </div>

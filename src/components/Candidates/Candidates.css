@@ -10,7 +10,7 @@ div {
     margin: 10px;
     text-align: center;
     box-shadow: -1px 6px 11px 0px rgba(0, 0, 0, 0.63);
-    width: 80%;
+    width: 90%;
 }
 
 img {
@@ -28,6 +28,7 @@ img {
 
 .candidates {
     margin-bottom: 100px;
+    
 }
 
 .noUsersDiv img {
@@ -36,9 +37,4 @@ img {
 
 .noUsersDiv {
     margin-top: 15%;
-}
-
-.candidates img {
-    width: 75%;
-    padding-top: 30px;
 }
