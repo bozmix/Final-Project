@@ -50,3 +50,13 @@
 .notesTextModal {
     display: inline-block;
 }
+
+@media screen and (max-width: 600px) {
+    .ReactModal__Content {
+        inset: 10% 40px 40px 25% !important;
+    }
+    
+    .ReactModal__Content--after-open {
+        inset: 10% 40px 40px 25% !important;
+    }
+}

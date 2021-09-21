@@ -31,3 +31,7 @@ td {
 .singleCandidateReports {
     margin-bottom: 100px;
 }
+
+.imagePlaceholder {
+    width: 60%;
+}

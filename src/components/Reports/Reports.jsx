@@ -13,10 +13,11 @@ export const Reports = () => {
 
     const [reports, setReports] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
     const [filteredReports, setFilteredReports] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    console.log(reports)
 
     let token = localStorage.getItem("tokenNibble")
 
@@ -135,7 +136,7 @@ export const Reports = () => {
                                     <div className="me-5 text-black-50">Status</div>
                                 </div>
 
-                                <div className="col-xs-6 col-lg-1 text-md-center text-lg-center">
+                                <div className="col-xs-6 col-lg-1 text-lg-center">
                                     <button onClick={() => {
                                         setModalIsOpen(true)
                                         localStorage.setItem("modalNibble", report.id)

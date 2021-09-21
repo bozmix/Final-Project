@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { LoadingPage } from "../LoadingPage/LoadingPage";
 import { useEffect } from "react/cjs/react.development";
 import { getCandidates } from "../../Services/getCandidates";
@@ -12,7 +12,7 @@ export const Candidates = () => {
 
     const [candidates, setCandidates] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
     const [filteredCandidates, setFilteredCandidates] = useState([]);
 
     let token = localStorage.getItem("tokenNibble")
@@ -26,6 +26,7 @@ export const Candidates = () => {
         })
     }, [])
 
+    
     useEffect(() => {
         const filtCandidates = candidates.filter(candidate => {
             return candidate.name.toLowerCase().includes(searchQuery)
@@ -56,20 +57,24 @@ export const Candidates = () => {
             <>
                 <SearchBar setSearchTerm={setSearchQuery} filterFunction={filterFunction} />
 
-                <div className='candidates ps-xs-1 pe-xs-1 ps-sm-5 pe-sm-5 ps-md-5 pe-md-5 ps-xl-5 pe-xl-5 ms-5 mx-xs-auto mx-sm-auto mx-md-auto mx-lg-auto'>
-                    {filteredCandidates.map((candidates2, index) => {
-                        return (
-                            <Link to={`/single-candidate/${candidates2.id}`} key={index}>
-                                <div className="candidate  col-xs-12">
-                                    <div className='image'>
-                                        <img src={avatar} alt="profileCandidate" />
-                                    </div>
-                                    <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name}</h4>
-                                    <p>{(candidates2.email === undefined) ? "No data about email" : candidates2.email}</p>
+                <div className="container-fluid ">
+                    <div className="candidates row justify-content-center ms-5 me-5 mt-xs-5 mt-md-1">
+                        {filteredCandidates.map((candidates2, index) => {
+                            return (
+                                <div className="col-md-4 col-lg-3 mb-5">
+                                    <Link to={`/single-candidate/${candidates2.id}`} key={index}>
+                                        <div className="candidate  mx-auto">
+                                            <div className="image">
+                                                <img src={avatar} alt="profileCandidate" />
+                                            </div>
+                                            <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name} </h4>
+                                            <p className="text-break pb-3">{(candidates2.email === undefined) ? "No data about email" : candidates2.email}</p>
+                                        </div>
+                                    </Link>
                                 </div>
-                            </Link>
-                        )
-                    })}
+                            )
+                        })}
+                    </div>
                 </div>
             </>
         )
