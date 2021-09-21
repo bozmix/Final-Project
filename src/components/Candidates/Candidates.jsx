@@ -55,21 +55,24 @@ export const Candidates = () => {
         : (
             <>
                 <SearchBar setSearchTerm={setSearchQuery} filterFunction={filterFunction} />
-
-                <div className='candidates ps-xs-1 pe-xs-1 ps-sm-5 pe-sm-5 ps-md-5 pe-md-5 ps-xl-5 pe-xl-5 ms-5 mx-xs-auto mx-sm-auto mx-md-auto mx-lg-auto'>
+                <div className="container-fluid ">
+                <div className='candidates row justify-content-center ms-5 me-5'>
                     {filteredCandidates.map((candidates2, index) => {
                         return (
+                            <div className="col-md-6 col-lg-4 mb-5">
                             <Link to={`/single-candidate/${candidates2.id}`} key={index}>
-                                <div className="candidate  col-xs-12">
+                                <div className="candidate  mx-auto">
                                     <div className='image'>
                                         <img src={avatar} alt="profileCandidate" />
                                     </div>
-                                    <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name}</h4>
+                                    <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name} </h4>
                                     <p>{(candidates2.email === undefined) ? "No data about email" : candidates2.email}</p>
-                                </div>
+                                </div> 
                             </Link>
+                            </div>
                         )
                     })}
+                </div>
                 </div>
             </>
         )
