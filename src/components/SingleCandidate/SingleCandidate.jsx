@@ -65,17 +65,17 @@ export const SingleCandidate = (props) => {
     } else {
         return (
             <>
-                <div className="singleCandidateInfo row p-5">
-                    <div className="profilePhoto col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                <div className="singleCandidateInfo mt-sm-1 mt-md-5 row p-5 text-sm-center text-lg-start">
+                    <div className="profilePhoto col-xs-12 col-sm-12 col-md-12 col-lg-4">
                         <img className="imagePlaceholder" src={avatar} alt="candidateProfilePicture"></img>
                     </div>
-                    <div className="nameEmail col-xs-12 col-sm-12 col-md-6 col-lg-4 p-5">
+                    <div className="nameEmail col-xs-12 col-sm-12 col-md-6 col-lg-4 p-5 pt-xs-1 pb-xs-1 pt-sm-1 pb-sm-1 fs-4">
                         <p className="fw-bold">Name:</p>
                         <p className="ms-3">{candidate.name}</p>
                         <p className="fw-bold">Email:</p>
                         <p className="ms-3">{candidate.email}</p>
                     </div>
-                    <div className="birthEducation col-xs-12 col-sm-12 col-md-6 col-lg-4 p-5">
+                    <div className="birthEducation col-xs-12 col-sm-12 col-md-6 col-lg-4 pt-xs-1 pb-xs-1 p-5 pt-sm-1 pb-sm-1 fs-4">
                         <p className="fw-bold">Date of birth:</p>
                         <p className="ms-3">{getDate(candidate.birthday)}</p>
                         <p className="fw-bold">Education:</p>
@@ -105,7 +105,7 @@ export const SingleCandidate = (props) => {
                 </Modal>
 
 
-                <div className="singleCandidateReports">
+                <div className="singleCandidateReports ms-5 me-5">
                     <table className="table table-striped table-hover">
                         <tbody>
                             <tr>
@@ -129,7 +129,6 @@ export const SingleCandidate = (props) => {
 
                             ))
                             }
-
                         </tbody>
                     </table>
                 </div>

@@ -1,6 +1,6 @@
 import "./Login.css";
 import "../../Services/getToken";
-import { useState } from 'react';
+import { useState } from "react";
 import { getToken } from "../../Services/getToken";
 
 
@@ -10,6 +10,7 @@ export const Login = ({ changeLogIn }) => {
     const [passwordInputValue, setPasswordInputValue] = useState("");
     const [wrongUsernameOrPassword, setWrongUsernameOrPassword] = useState(false);
 
+    
     const emailInput = (event) => {
         setEmailInputValue(event.target.value)
     }
@@ -22,24 +23,28 @@ export const Login = ({ changeLogIn }) => {
 
     const submitEmailAndPass = () => {
         if (emailInputValue.includes('@') && passwordInputValue.length >= 6) {
-/*             localStorage.setItem("userLoggedIn#10394e1", true)
-
- */            
             setWrongUsernameOrPassword(false);
-getToken(emailInputValue, passwordInputValue)
+
+            getToken(emailInputValue, passwordInputValue)
                 .then(token => {
-                    localStorage.setItem('tokenNibble', token);
-                    changeLogIn(true);
-                }).catch(err => console.log(err))
-            setWrongUsernameOrPassword(false)
+                    if (token === undefined) {
+                        setWrongUsernameOrPassword(true)
+                    } else {
+                        localStorage.setItem("tokenNibble", token);
+                        changeLogIn(true);
+                    }
+                }).catch(err => {
+                    console.log(err)
+                    setWrongUsernameOrPassword(true);
+                })
         } else {
-            setWrongUsernameOrPassword(true)
+            setWrongUsernameOrPassword(true);
         }
     }
 
 
     const loginByPressingEnter = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === "Enter") {
             submitEmailAndPass()
         }
     }
