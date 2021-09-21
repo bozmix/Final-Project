@@ -83,7 +83,7 @@ export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandid
 
 
                 <div className="selectCandidates col-8">
-                    <div className="searchBarCandidates pt-3 ps-3 pe-5">
+                    <div className="searchBarCandidates ps-3 pe-5">
                         <SearchBar filterFunction={filterFunction} />
                     </div>
 

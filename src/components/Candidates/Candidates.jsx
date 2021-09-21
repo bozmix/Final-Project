@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { LoadingPage } from "../LoadingPage/LoadingPage";
 import { useEffect } from "react/cjs/react.development";
 import { getCandidates } from "../../Services/getCandidates";
@@ -12,7 +12,7 @@ export const Candidates = () => {
 
     const [candidates, setCandidates] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
     const [filteredCandidates, setFilteredCandidates] = useState([]);
 
     let token = localStorage.getItem("tokenNibble")
@@ -55,6 +55,7 @@ export const Candidates = () => {
         : (
             <>
                 <SearchBar setSearchTerm={setSearchQuery} filterFunction={filterFunction} />
+
                 <div className="container-fluid ">
                 <div className='candidates row justify-content-center ms-5 me-5'>
                     {filteredCandidates.map((candidates2, index) => {

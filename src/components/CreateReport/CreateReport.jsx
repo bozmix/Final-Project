@@ -54,6 +54,9 @@ export const CreateReport = (props) => {
     if (submit) {
         sendCreateNewReportRequest()
         setSubmit(false)
+        setTimeout(() => {
+            window.location.replace("/home");
+        }, 5000);
     }
 
 
