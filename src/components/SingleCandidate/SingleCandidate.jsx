@@ -105,7 +105,7 @@ export const SingleCandidate = (props) => {
                 </Modal>
 
 
-                <div className="singleCandidateReports">
+                <div className="singleCandidateReports ms-5 me-5">
                     <table className="table table-striped table-hover">
                         <tbody>
                             <tr>

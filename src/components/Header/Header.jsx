@@ -11,7 +11,7 @@ export const Header = ({ changeLogIn }) => {
 
 
     return (
-        <header className="p-5 bg-info">
+        <header className="bg-info">
             <nav className="navbar bg-info navbar-expand-sm fixed-top">
 
                 <Link className="interviewsReports col-lg-6" to="/home">
@@ -36,7 +36,6 @@ export const Header = ({ changeLogIn }) => {
                         Log Out
                     </button>
                 </div>
-
             </nav>
         </header>
     );

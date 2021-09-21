@@ -1,0 +1,9 @@
+.searchNavbar {
+    margin-top: 100px;
+}
+
+@media screen and (max-width: 320px) {
+    .searchNavbar {
+        margin-top: 200px;
+    }
+}

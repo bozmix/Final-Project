@@ -28,7 +28,6 @@ img {
 
 .candidates {
     margin-bottom: 100px;
-    
 }
 
 .noUsersDiv img {
@@ -37,4 +36,9 @@ img {
 
 .noUsersDiv {
     margin-top: 15%;
+}
+
+.candidates img {
+    width: 75%;
+    padding-top: 30px;
 }

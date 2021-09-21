@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { LoadingPage } from "../LoadingPage/LoadingPage";
 import { useEffect } from "react/cjs/react.development";
 import { getCandidates } from "../../Services/getCandidates";
@@ -12,7 +12,7 @@ export const Candidates = () => {
 
     const [candidates, setCandidates] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
     const [filteredCandidates, setFilteredCandidates] = useState([]);
 
     let token = localStorage.getItem("tokenNibble")
@@ -56,18 +56,20 @@ export const Candidates = () => {
             <>
                 <SearchBar setSearchTerm={setSearchQuery} filterFunction={filterFunction} />
 
-                <div className='candidates ps-xs-1 pe-xs-1 ps-sm-5 pe-sm-5 ps-md-5 pe-md-5 ps-xl-5 pe-xl-5 ms-5 mx-xs-auto mx-sm-auto mx-md-auto mx-lg-auto'>
+                <div className="candidates ps-sm-1 ps-md-5 row">
                     {filteredCandidates.map((candidates2, index) => {
                         return (
-                            <Link to={`/single-candidate/${candidates2.id}`} key={index}>
-                                <div className="candidate  col-xs-12">
-                                    <div className='image'>
-                                        <img src={avatar} alt="profileCandidate" />
+                            <div className="candidateLink col-xs-6 col-sm-6 col-md-4 col-lg-3">
+                                <Link to={`/single-candidate/${candidates2.id}`} key={index}>
+                                    <div className="candidate">
+                                        <div className="candidateImageDiv">
+                                            <img src={avatar} alt="profileCandidate" />
+                                        </div>
+                                        <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name}</h4>
+                                        <p>{(candidates2.email === undefined) ? "No data about email" : candidates2.email}</p>
                                     </div>
-                                    <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name}</h4>
-                                    <p>{(candidates2.email === undefined) ? "No data about email" : candidates2.email}</p>
-                                </div>
-                            </Link>
+                                </Link>
+                            </div>
                         )
                     })}
                 </div>
