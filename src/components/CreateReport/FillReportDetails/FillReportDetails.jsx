@@ -1,12 +1,15 @@
 import "./FillReportDetails.css";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import Select from "react-select";
 import numberOne from "../assets/numberOneInCircle.png";
 import numberTwo from "../assets/numberTwoInCircle.png";
 import numberThree from "../assets/numberThreeInCircle.png";
-import { Link } from "react-router-dom";
-import Select from "react-select";
-import { getDate } from "../../../Services/getDate";
 
 export const FillReportDetails = ({ stepBack, nextStep, selectedCandidate, selectedCompany, interviewDate, setinterviewDate, phase, setPhase, status, setStatus, notes, setNotes, setSubmit }) => {
+
+    const [warningText, setWarningText] = useState("");
+
 
     const handleStatus = e => {
         setStatus(e.value);
@@ -18,17 +21,19 @@ export const FillReportDetails = ({ stepBack, nextStep, selectedCandidate, selec
 
     const sendSubmit = () => {
         if (interviewDate.length < 4) {
-            alert("Please select valid date")
-        } else if (phase === undefined) {
-            alert("Please select phase")
+            setWarningText("Please select valid date")
+        } else if ((phase === undefined) || phase === "") {
+            setWarningText("Please select phase")
+        } else if ((status === undefined) || status === "") {
+            setWarningText("Please select status")
         } else if (notes.length < 4) {
-            alert("Please write a longer note")
+            setWarningText("Please write a longer note")
         } else {
+            setWarningText("");
             nextStep()
             setSubmit(true)
         }
     }
-
 
 
     const phaseData = [
@@ -52,6 +57,7 @@ export const FillReportDetails = ({ stepBack, nextStep, selectedCandidate, selec
             label: "final"
         },
     ];
+
 
     const statusData = [
         {
@@ -92,10 +98,13 @@ export const FillReportDetails = ({ stepBack, nextStep, selectedCandidate, selec
 
                 <div className="reportDetails ms-4 ps-xs-5 ps-sm-4  ms-xs-5 ms-sm-4 col-7">
                     <div className="col-12 m-3">
+                        <div className="text-danger fs-1 fw-bold text-center">
+                            {warningText}
+                        </div>
 
                         <p>Interview Date:</p>
                         <label htmlFor="">
-                            <input type="date" onChange={(event) => setinterviewDate(getDate(event.target.value))} />
+                            <input type="date" onChange={(event) => setinterviewDate(event.target.value)} />
                         </label>
 
                         <p className="mt-3">Phase:</p>
@@ -104,20 +113,19 @@ export const FillReportDetails = ({ stepBack, nextStep, selectedCandidate, selec
 
                         <p className="mt-3">Status</p>
                         <Select placeholder="Select Option" value={statusData.find(obj => obj.value === status)} options={statusData} onChange={handleStatus} />
-
                     </div>
 
                     <div className="notesReportDetails ms-4">
                         <p>Notes</p>
                         <div className="input-group mb-3">
-                            <textarea name="" id="notesTextarea" cols="150" rows="10" onChange={(event) => setNotes(event.target.value)}></textarea>
+                            <textarea className="border border-secondary" name="" id="notesTextarea" cols="200" rows="10" onChange={(event) => setNotes(event.target.value)}></textarea>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="BackAndNextButtons position-relative">
-                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 backButtonFillReports" onClick={stepBack}>BACK</button>
-                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 me-5 nextButtonFillReports" onClick={sendSubmit}>SUBMIT</button>
+                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-10 backButtonFillReports" onClick={stepBack}>BACK</button>
+                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-10 me-5 nextButtonFillReports" onClick={sendSubmit}>SUBMIT</button>
             </div>
         </>
     )

@@ -12,10 +12,11 @@ export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandid
 
     const [candidates, setCandidates] = useState([]);
     const [filteredCandidates, setFilteredCandidates] = useState([]);
-    const [searchQuery, setSearchQuery] = useState('');
-
+    const [searchQuery, setSearchQuery] = useState("");
+    const [warningText, setWarningText] = useState("");
+    
     let token = localStorage.getItem("tokenNibble");
-
+    
 
     useEffect(() => {
         getCandidates(token)
@@ -24,6 +25,7 @@ export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandid
                 setFilteredCandidates(candidates)
             })
     }, [])
+
 
     useEffect(() => {
         const filtCandidates = candidates.filter(candidate => {
@@ -40,12 +42,12 @@ export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandid
 
     const validateSelectCandidate = () => {
         if (selectedCandidate.length !== 0) {
+            setWarningText("");
             nextStep()
         } else {
-            alert("Please select candidate")
+            setWarningText("Please select candidate!");
         }
     }
-
 
 
     return (
@@ -82,9 +84,13 @@ export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandid
                 </div>
 
 
-                <div className="selectCandidates col-8">
-                    <div className="searchBarCandidates ps-3 pe-5">
+                <div className="selectCandidates col-8 ms-5 ms-sm-5 ms-md-0">
+                    <div className="searchBarCandidates ps-3">
                         <SearchBar filterFunction={filterFunction} />
+                    </div>
+
+                    <div className="text-danger fs-1 fw-bold text-center">
+                        {warningText}
                     </div>
 
                     {filteredCandidates.map((candidate, index) => {
@@ -94,7 +100,7 @@ export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandid
                                 <img className="smallAvatar col-3 mb-3" src={avatar} alt="" />
                                 <div className="d-inline-block m-3">
                                     <p className="">{candidate.name}</p>
-                                    <p className="">{candidate.email}</p>
+                                    <p className="text-break">{candidate.email}</p>
                                 </div>
                             </div>
                         )
@@ -103,9 +109,7 @@ export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandid
                 </div>
             </div>
             <div className="BackAndNextButtons position-relative">
-
-                <button className="btn btn-info p-3 ps-5 pe-5 position-absolute bottom-0 end-0 me-5" onClick={validateSelectCandidate}>NEXT</button>
-
+                <button className="btn btn-info p-3 ps-5 pe-5 buttonNextSelectCandidate position-absolute me-5" onClick={validateSelectCandidate}>NEXT</button>
             </div>
         </>
     )

@@ -19,7 +19,6 @@ export const ModalComponent = ({ reports, setModalIsOpen }) => {
 
     return (
         <div className="containerModal">
-
             <p className="topModalInfo ms-5 mt-3 h3 mb-3 col-9">{singleReport.candidateName}</p>
             <button onClick={() => setModalIsOpen(false)} className="closeButtonModal col-1 mb-0"><i className="far fa-times-circle fa-2x"></i></button>
             <hr className="hrLineModal" />

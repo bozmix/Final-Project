@@ -25,3 +25,7 @@
 .searchBarCandidates {
     padding-top: 0px;
 }
+
+.buttonNextSelectCandidate {
+    right: 8%;
+}

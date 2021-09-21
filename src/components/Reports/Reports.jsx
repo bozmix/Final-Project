@@ -13,7 +13,7 @@ export const Reports = () => {
 
     const [reports, setReports] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
     const [filteredReports, setFilteredReports] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 

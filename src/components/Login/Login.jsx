@@ -1,6 +1,6 @@
 import "./Login.css";
 import "../../Services/getToken";
-import { useState } from 'react';
+import { useState } from "react";
 import { getToken } from "../../Services/getToken";
 
 
@@ -10,6 +10,7 @@ export const Login = ({ changeLogIn }) => {
     const [passwordInputValue, setPasswordInputValue] = useState("");
     const [wrongUsernameOrPassword, setWrongUsernameOrPassword] = useState(false);
 
+    
     const emailInput = (event) => {
         setEmailInputValue(event.target.value)
     }
@@ -29,7 +30,7 @@ export const Login = ({ changeLogIn }) => {
                     if (token === undefined) {
                         setWrongUsernameOrPassword(true)
                     } else {
-                        localStorage.setItem('tokenNibble', token);
+                        localStorage.setItem("tokenNibble", token);
                         changeLogIn(true);
                     }
                 }).catch(err => {
@@ -43,7 +44,7 @@ export const Login = ({ changeLogIn }) => {
 
 
     const loginByPressingEnter = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === "Enter") {
             submitEmailAndPass()
         }
     }

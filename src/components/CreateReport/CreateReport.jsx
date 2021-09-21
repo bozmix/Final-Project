@@ -6,7 +6,7 @@ import { Success } from "./Success/Success";
 import { useHistory } from "react-router";
 import { useState } from "react/cjs/react.development";
 import { Link } from "react-router-dom";
-import { Reports } from "../Reports/Reports";
+
 
 
 
@@ -22,6 +22,11 @@ export const CreateReport = (props) => {
     const [notes, setNotes] = useState("");
     const [submit, setSubmit] = useState(false);
 
+    console.log(phase)
+    console.log(status)
+    console.log(interviewDate)
+    console.log(new Date(interviewDate))
+
 
     const step = +props.match.params.step;      //+ converts any string to number if possible
 
@@ -32,7 +37,7 @@ export const CreateReport = (props) => {
         candidateName: selectedCandidate.name,
         companyId: selectedCompany.id,
         companyName: selectedCompany.name,
-        interviewDate: interviewDate,
+        interviewDate: new Date(interviewDate),
         phase: phase,
         status: status,
         note: notes
@@ -40,10 +45,11 @@ export const CreateReport = (props) => {
 
 
     const sendCreateNewReportRequest = () => {
-        return fetch("http://localhost:3333/reports", {
+        return fetch("http://localhost:3333/api/reports", {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(dataToBeSent),
         })
@@ -54,9 +60,9 @@ export const CreateReport = (props) => {
     if (submit) {
         sendCreateNewReportRequest()
         setSubmit(false)
-        setTimeout(() => {
+/*         setTimeout(() => {
             window.location.replace("/home");
-        }, 5000);
+        }, 5000); */
     }
 
 
@@ -86,9 +92,9 @@ export const CreateReport = (props) => {
             <nav className="navbar navbar-light bg-light ps-5">
                 <form className="container-fluid justify-content-start">
                     <div className="col-10 h1">Reports Administration </div>
-                    <div className="buttonsDiv col-2">
+                    <div className="buttonsDiv col-2 text-end pe-4">
                         <Link to={`/create/1`}>
-                            <button className="btn btn-secondary text-white btn-outline-success me-2" type="button">Create New Report</button>
+                            <button className="btn btn-secondary text-white btn-outline-success  me-3" type="button">Create New Report</button>
                         </Link>
                     </div>
                 </form>

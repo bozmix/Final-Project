@@ -26,6 +26,7 @@ export const Candidates = () => {
         })
     }, [])
 
+    
     useEffect(() => {
         const filtCandidates = candidates.filter(candidate => {
             return candidate.name.toLowerCase().includes(searchQuery)
@@ -57,23 +58,23 @@ export const Candidates = () => {
                 <SearchBar setSearchTerm={setSearchQuery} filterFunction={filterFunction} />
 
                 <div className="container-fluid ">
-                <div className='candidates row justify-content-center ms-5 me-5'>
-                    {filteredCandidates.map((candidates2, index) => {
-                        return (
-                            <div className="col-md-6 col-lg-4 mb-5">
-                            <Link to={`/single-candidate/${candidates2.id}`} key={index}>
-                                <div className="candidate  mx-auto">
-                                    <div className='image'>
-                                        <img src={avatar} alt="profileCandidate" />
-                                    </div>
-                                    <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name} </h4>
-                                    <p>{(candidates2.email === undefined) ? "No data about email" : candidates2.email}</p>
-                                </div> 
-                            </Link>
-                            </div>
-                        )
-                    })}
-                </div>
+                    <div className="candidates row justify-content-center ms-5 me-5 mt-xs-5 mt-md-1">
+                        {filteredCandidates.map((candidates2, index) => {
+                            return (
+                                <div className="col-md-4 col-lg-3 mb-5">
+                                    <Link to={`/single-candidate/${candidates2.id}`} key={index}>
+                                        <div className="candidate  mx-auto">
+                                            <div className="image">
+                                                <img src={avatar} alt="profileCandidate" />
+                                            </div>
+                                            <h4>{(candidates2.name === undefined) ? "No name available" : candidates2.name} </h4>
+                                            <p className="text-break pb-3">{(candidates2.email === undefined) ? "No data about email" : candidates2.email}</p>
+                                        </div>
+                                    </Link>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             </>
         )
