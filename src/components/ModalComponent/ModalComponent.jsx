@@ -1,6 +1,6 @@
-import "./ModalComponent.css";
 import { getDate } from "../../Services/getDate";
 import { useEffect, useState } from "react/cjs/react.development";
+import "./ModalComponent.css";
 
 
 

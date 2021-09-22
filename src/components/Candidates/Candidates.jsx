@@ -8,6 +8,7 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import avatar from "./assets/avatar.png";
 import "./Candidates.css";
 
+
 export const Candidates = () => {
 
     const [candidates, setCandidates] = useState([]);
@@ -15,13 +16,13 @@ export const Candidates = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredCandidates, setFilteredCandidates] = useState([]);
 
-    let token = localStorage.getItem("tokenNibble")
+    let token = localStorage.getItem("tokenNibble");
 
 
     useEffect(() => {
         getCandidates(token).then(candidates => {
-            setCandidates(candidates)
-            setFilteredCandidates(candidates)
+            setCandidates(candidates);
+            setFilteredCandidates(candidates);
             setIsLoading(false);
         })
     }, [])
