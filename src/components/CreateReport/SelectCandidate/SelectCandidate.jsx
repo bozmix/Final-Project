@@ -1,6 +1,7 @@
 import { getCandidates } from "../../../Services/getCandidates";
 import { useEffect, useState } from "react/cjs/react.development";
 import { Link } from "react-router-dom";
+import { getEmail } from "../../../Services/getEmail";
 import numberOne from "../assets/numberOneInCircle.png";
 import numberTwo from "../assets/numberTwoInCircle.png";
 import numberThree from "../assets/numberThreeInCircle.png";
@@ -14,9 +15,9 @@ export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandid
     const [filteredCandidates, setFilteredCandidates] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [warningText, setWarningText] = useState("");
-    
+
     let token = localStorage.getItem("tokenNibble");
-    
+
 
     useEffect(() => {
         getCandidates(token)
@@ -95,12 +96,13 @@ export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandid
 
                     {filteredCandidates.map((candidate, index) => {
                         return (
-                            <div className="oneCandidateToSelect bg-light d-inline-block col-5 p-1 m-3 me-1" id={candidate.id}
+                            <div className="oneCandidateToSelect bg-light d-inline-block col-5 p-1 m-2 me-1 mx-auto" id={candidate.id}
                                 onClick={() => setSelectedCandidate(candidate)} key={index}>
-                                <img className="smallAvatar col-3 mb-3" src={avatar} alt="" />
-                                <div className="d-inline-block m-3">
+
+                                <img className="smallAvatar col-3 mb-3" src={avatar} alt="Small avatar image" />
+                                <div className="d-inline-block m-1 col-8">
                                     <p className="">{candidate.name}</p>
-                                    <p className="text-break">{candidate.email}</p>
+                                    <p className="text-break">{getEmail(candidate.email)}</p>
                                 </div>
                             </div>
                         )
