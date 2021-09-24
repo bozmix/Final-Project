@@ -1,6 +1,6 @@
-import "./ModalComponent.css";
-import { getDate } from "../../Services/getDate";
 import { useEffect, useState } from "react/cjs/react.development";
+import { getDate } from "../../Services/getDate";
+import "./ModalComponent.css";
 
 
 
@@ -36,7 +36,7 @@ export const ModalComponent = ({ reports, setModalIsOpen }) => {
                 </div>
 
                 <div className="candidateNotes me-5 ms-5 col-5">
-                    <p className="m-0 mb-1 mt-2 text-black-50 notesModal">Notes</p>
+                    <p className="m-0 mb-1 mt-2 text-black-50 notesModal col-11">Notes</p>
                     <p className="m-0 mb-3 notesTextModal">{singleReport.note}</p>
                 </div>
             </div>

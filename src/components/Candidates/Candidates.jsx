@@ -8,6 +8,7 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import avatar from "./assets/avatar.png";
 import "./Candidates.css";
 
+
 export const Candidates = () => {
 
     const [candidates, setCandidates] = useState([]);
@@ -15,13 +16,13 @@ export const Candidates = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredCandidates, setFilteredCandidates] = useState([]);
 
-    let token = localStorage.getItem("tokenNibble")
+    let token = localStorage.getItem("tokenNibble");
 
 
     useEffect(() => {
         getCandidates(token).then(candidates => {
-            setCandidates(candidates)
-            setFilteredCandidates(candidates)
+            setCandidates(candidates);
+            setFilteredCandidates(candidates);
             setIsLoading(false);
         })
     }, [])
@@ -61,8 +62,8 @@ export const Candidates = () => {
                     <div className="candidates row justify-content-center ms-5 me-5 mt-xs-5 mt-md-1">
                         {filteredCandidates.map((candidates2, index) => {
                             return (
-                                <div className="col-md-4 col-lg-3 mb-5">
-                                    <Link to={`/single-candidate/${candidates2.id}`} key={index}>
+                                <div className="col-md-4 col-lg-3 mb-5" key={index}>
+                                    <Link to={`/single-candidate/${candidates2.id}`}>
                                         <div className="candidate  mx-auto">
                                             <div className="image">
                                                 <img src={avatar} alt="profileCandidate" />

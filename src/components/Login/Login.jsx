@@ -1,10 +1,10 @@
-import "./Login.css";
-import "../../Services/getToken";
 import { useState } from "react";
 import { getToken } from "../../Services/getToken";
+import "./Login.css";
 
 
-export const Login = ({ changeLogIn }) => {
+
+export const Login = ({ setLoggedIn }) => {
 
     const [emailInputValue, setEmailInputValue] = useState("");
     const [passwordInputValue, setPasswordInputValue] = useState("");
@@ -31,7 +31,7 @@ export const Login = ({ changeLogIn }) => {
                         setWrongUsernameOrPassword(true)
                     } else {
                         localStorage.setItem("tokenNibble", token);
-                        changeLogIn(true);
+                        setLoggedIn(true);
                     }
                 }).catch(err => {
                     console.log(err)
@@ -55,7 +55,7 @@ export const Login = ({ changeLogIn }) => {
             <div id="formContentLogin">
                 <div>
                     {wrongUsernameOrPassword ? <div className="text-danger fw-bold">Wrong username or password</div> : null}
-                    <input type="text" id="inputLogin" className="fadeIn firstLogin" name="email" placeholder="Login" onChange={emailInput} onKeyPress={loginByPressingEnter}></input>
+                    <input type="text" id="inputLogin" className="fadeIn firstLogin" name="email" placeholder="Email" onChange={emailInput} onKeyPress={loginByPressingEnter}></input>
                     <input type="password" id="inputPassword" className="fadeIn secondLogin" name="password" placeholder="Password" onChange={passwordInput} onKeyPress={loginByPressingEnter}></input>
                     <button type="submit" onClick={submitEmailAndPass} id="inputSubmit" className="fadeIn thirdLogin" value="Log In">Log In</button>
                 </div>
