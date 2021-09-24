@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react/cjs/react.development";
 import Modal from "react-modal";
+import { Link } from "react-router-dom";
 import { getReports } from "../../Services/getReports";
 import { getDate } from "../../Services/getDate";
 import { ModalComponent } from "../ModalComponent/ModalComponent";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { NoUsers } from "../NoUsers/NoUsers";
 import { LoadingPage } from "../LoadingPage/LoadingPage";
-import { Link } from "react-router-dom";
 import "./Reports.css";
 
 export const Reports = () => {

@@ -1,10 +1,10 @@
+import { useHistory } from "react-router";
+import { useState } from "react/cjs/react.development";
+import { Link } from "react-router-dom";
 import { SelectCandidate } from "./SelectCandidate/SelectCandidate";
 import { SelectCompany } from "./SelectCompany/SelectCompany";
 import { FillReportDetails } from "./FillReportDetails/FillReportDetails";
 import { Success } from "./Success/Success";
-import { useHistory } from "react-router";
-import { useState } from "react/cjs/react.development";
-import { Link } from "react-router-dom";
 import "./CreateReport.css";
 
 
@@ -84,10 +84,10 @@ export const CreateReport = (props) => {
         <>
             <nav className="navbar navbar-light bg-light ps-5">
                 <form className="container-fluid justify-content-start">
-                    <div className="col-10 h1">Reports Administration </div>
-                    <div className="buttonsDiv col-2 text-end pe-4">
+                    <div className="col-9 h1">Reports Administration </div>
+                    <div className="buttonsDiv col-3 text-end pe-5">
                         <Link to={`/create/1`}>
-                            <button className="btn btn-secondary text-white btn-outline-success  me-3" type="button">Create New Report</button>
+                            <button className="btn btn-secondary text-white btn-outline-success  me-5" type="button">Create New Report</button>
                         </Link>
                     </div>
                 </form>

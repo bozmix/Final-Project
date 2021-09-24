@@ -85,8 +85,8 @@ export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandid
                 </div>
 
 
-                <div className="selectCandidates col-8 ms-5 ms-sm-5 ms-md-0">
-                    <div className="searchBarCandidates ps-3">
+                <div className="selectCandidates col-7 ms-sm-5 ms-5">
+                    <div className="searchBarCandidates">
                         <SearchBar filterFunction={filterFunction} />
                     </div>
 
@@ -96,10 +96,10 @@ export const SelectCandidate = ({ nextStep, selectedCandidate, setSelectedCandid
 
                     {filteredCandidates.map((candidate, index) => {
                         return (
-                            <div className="oneCandidateToSelect bg-light d-inline-block col-5 p-1 m-2 me-1 mx-auto" id={candidate.id}
+                            <div className="oneCandidateToSelect bg-light d-inline-block col-xs-11 col-lg-5 p-1 m-2 me-md-5 mx-auto" id={candidate.id}
                                 onClick={() => setSelectedCandidate(candidate)} key={index}>
 
-                                <img className="smallAvatar col-3 mb-3" src={avatar} alt="Small avatar image" />
+                                <img className="smallAvatar col-3 mb-3" src={avatar} alt="Small avatar" />
                                 <div className="d-inline-block m-1 col-8">
                                     <p className="">{candidate.name}</p>
                                     <p className="text-break">{getEmail(candidate.email)}</p>

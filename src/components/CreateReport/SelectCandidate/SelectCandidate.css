@@ -2,6 +2,10 @@
     width: 50px;
 }
 
+.oneCandidateToSelect {
+    border: 1px solid white;
+}
+
 .smallAvatar {
     width: 25%;
     border-radius: 50%;
@@ -30,4 +34,3 @@
     right: 8%;
 }
 
-  
