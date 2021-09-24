@@ -1,6 +1,25 @@
-# Getting Started with Create React App
+[Interview-Reports](https://github.com/SlobodanStojkovic/interview-reports)
+Interview-Reports is the Final Project on BIT Frontend Development Bootcamp.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Techologies used in this project are React, JavaScript, HTML, CSS, Bootstrap. We have also used react-router, react-modal and react-select dependencies.
+
+This project uses data from Reports API.
+Regarding interviews reports API you will be using a local web server that runs on localhost:3333. Complete API which is
+needed for developing tasks can be found at:
+[Interviews-Reports-Api-Mock](https://github.com/nenadbugaric/interviews-reports-api-mock/)
+
+Set up instructions:
+git clone https://github.com/nenadbugaric/interviews-reports-api-mock/
+git checkout auth-client
+npm install
+npm start
+
+On the github repository page you will find all information about how to start a web server and
+how to use API locally for development.
+
+
+
+This project was bootstrapped with with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
