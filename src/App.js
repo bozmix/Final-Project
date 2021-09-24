@@ -22,7 +22,7 @@ function App() {
         loggedIn
           ?
           <>
-            <Header changeLogIn={setLoggedIn} />
+            <Header setLoggedIn={setLoggedIn} />
             <Switch>
               <Route path="/home" component={Candidates} />
               <Route path="/single-candidate/:id" component={SingleCandidate} />
@@ -33,7 +33,7 @@ function App() {
           </>
           :
           <>
-          <Login changeLogIn={setLoggedIn} />
+          <Login setLoggedIn={setLoggedIn} />
           <Redirect from="/" to="/login" />
           </>
       }

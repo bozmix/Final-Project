@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react/cjs/react.development";
 import Modal from "react-modal";
+import { Link } from "react-router-dom";
 import { getReports } from "../../Services/getReports";
 import { getDate } from "../../Services/getDate";
 import { ModalComponent } from "../ModalComponent/ModalComponent";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { NoUsers } from "../NoUsers/NoUsers";
 import { LoadingPage } from "../LoadingPage/LoadingPage";
-import { Link } from "react-router-dom";
 import "./Reports.css";
 
 export const Reports = () => {
@@ -17,9 +17,8 @@ export const Reports = () => {
     const [filteredReports, setFilteredReports] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    console.log(reports)
-
     let token = localStorage.getItem("tokenNibble")
+
 
     useEffect(() => {
         getReports(token).then(reports => {
@@ -36,10 +35,10 @@ export const Reports = () => {
             headers: {
                 Authorization: `Bearer ${token}`
             },
-
         })
             .then(response => response)
     }
+
 
     const onDeleteHandler = (id) => {
         deleteRequest(token, id)
@@ -50,9 +49,11 @@ export const Reports = () => {
             })
     }
 
+
     const filterFunction = (event) => {
         setSearchQuery(event.target.value.trim().toLowerCase())
     }
+
 
     useEffect(() => {
         const filtReports = reports.filter(report => {
@@ -61,9 +62,6 @@ export const Reports = () => {
         setFilteredReports(filtReports)
         setIsLoading(false)
     }, [searchQuery])
-    console.log(reports)
-    console.log(filteredReports)
-
 
 
 

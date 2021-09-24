@@ -1,5 +1,5 @@
-import "./LoadingPage.css";
 import loadingImage from "./assets/loadingScreen.gif";
+import "./LoadingPage.css";
 
 export const LoadingPage = () => {
     return (

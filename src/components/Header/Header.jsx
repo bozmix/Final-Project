@@ -1,13 +1,12 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
-export const Header = ({ changeLogIn }) => {
+export const Header = ({ setLoggedIn }) => {
 
     
     const logOut = () => {
-        localStorage.removeItem("tokenNibble")
-        changeLogIn(false);
+        localStorage.removeItem("tokenNibble");
+        setLoggedIn(false);
     }
 
 

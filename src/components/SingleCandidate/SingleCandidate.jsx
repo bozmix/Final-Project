@@ -4,17 +4,14 @@ import { getCandidates } from "../../Services/getCandidates";
 import { getCompanies } from "../../Services/getCompanies";
 import { getDate } from "../../Services/getDate";
 import { getReports } from "../../Services/getReports";
-import loadingImage from "./assets/loadingScreen.gif";
 import { getSingleCandidate } from "../../Services/getSingleCandidate";
 import { ModalComponent } from "../ModalComponent/ModalComponent";
+import loadingImage from "./assets/loadingScreen.gif";
 import avatar from "./assets/avatar.png";
 import "./SingleCandidate.css";
 
 
-
-
 export const SingleCandidate = (props) => {
-
 
     const [candidates, setCandidates] = useState([]);
     const [companies, setCompanies] = useState([]);
@@ -27,6 +24,7 @@ export const SingleCandidate = (props) => {
 
     let token = localStorage.getItem("tokenNibble");
 
+
     useEffect(() => {
         getCandidates(token).then(candidates => {
             setCandidates(candidates)
@@ -35,8 +33,6 @@ export const SingleCandidate = (props) => {
             setCompanies(companies)
         })
     }, [token])
-
-
 
 
     useEffect(() => {
